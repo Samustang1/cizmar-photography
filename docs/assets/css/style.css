@@ -452,6 +452,15 @@ h3 { font-size: 1.15rem; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-bottom-color: var(--accent); }
 .field.has-error input, .field.has-error select, .field.has-error textarea { border-bottom-color: var(--accent); }
 .field__error { color: var(--accent); font-size: .78rem; min-height: 1em; }
+
+/* Telefón: predvoľba krajiny + iba číslice */
+.phone { display: flex; gap: .5rem; align-items: stretch; border-bottom: 1px solid var(--line-2); transition: border-color .3s; }
+.phone:focus-within { border-bottom-color: var(--accent); }
+.field.has-error .phone { border-bottom-color: var(--accent); }
+.phone select, .phone input { border: 0; border-bottom: 0; background: transparent; padding: .6rem 0; }
+.phone select { max-width: 8.5rem; color: var(--ink); }
+.phone input { flex: 1 1 auto; min-width: 0; }
+.phone select:focus, .phone input:focus { border-bottom-color: transparent; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .form__note { font-size: .9rem; }
 .form__note.is-success { color: #1f7a3d; }

@@ -98,7 +98,20 @@
             <div class="form__row">
               <div class="field">
                 <label for="phone">Telefón</label>
-                <input id="phone" name="phone" type="tel" autocomplete="tel">
+                <div class="phone">
+                  <select id="phoneCode" name="phoneCode" aria-label="Predvoľba krajiny">
+                    <option value="+421" selected>+421 (SK)</option>
+                    <option value="+420">+420 (CZ)</option>
+                    <option value="+43">+43 (AT)</option>
+                    <option value="+48">+48 (PL)</option>
+                    <option value="+36">+36 (HU)</option>
+                    <option value="+380">+380 (UA)</option>
+                    <option value="+49">+49 (DE)</option>
+                    <option value="+44">+44 (UK)</option>
+                    <option value="+1">+1 (US)</option>
+                  </select>
+                  <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="912 345 678" maxlength="15">
+                </div>
                 <span class="field__error" data-error-for="phone"></span>
               </div>
               <div class="field">
@@ -116,7 +129,7 @@
               </div>
               <div class="field">
                 <label for="time">Čas</label>
-                <input id="time" name="time" type="text" placeholder="napr. podvečer">
+                <input id="time" name="time" type="time" step="900">
                 <span class="field__error" data-error-for="time"></span>
               </div>
             </div>

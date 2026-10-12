@@ -226,10 +226,12 @@
       if (!validate(true)) { showNote('Skontroluj označené polia.', 'error'); syncButton(); return; }
 
       var data = new FormData(form);
+      var phoneCode = data.get('phoneCode') || '';
+      var phoneDigits = (data.get('phone') || '').replace(/\D/g, '');
       var payload = {
         name: data.get('name') || '',
         email: data.get('email') || '',
-        phone: data.get('phone') || '',
+        phone: phoneDigits ? (phoneCode + ' ' + phoneDigits) : '',
         car: data.get('car') || '',
         datum: data.get('date') || '',
         cas: data.get('time') || '',
@@ -282,6 +284,15 @@
         setError(field.name, checkField(field.name));
       });
     });
+
+    /* Telefón: povolí iba číslice (max 15). */
+    var phoneInput = $('#phone');
+    if (phoneInput) {
+      phoneInput.addEventListener('input', function () {
+        var digits = phoneInput.value.replace(/\D/g, '').slice(0, 15);
+        if (digits !== phoneInput.value) phoneInput.value = digits;
+      });
+    }
 
     syncButton();
   }
