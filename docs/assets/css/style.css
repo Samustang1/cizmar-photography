@@ -242,6 +242,9 @@ h3 { font-size: 1.15rem; }
 .btn--text { border: 0; padding: 0 0 .35rem; border-bottom: 1px solid var(--accent); color: var(--accent); }
 .btn--text:hover { color: var(--accent-ink); border-color: var(--accent-ink); }
 .btn--block { width: 100%; justify-content: center; }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.btn--solid:disabled, .btn--solid:disabled:hover { background: var(--accent); border-color: var(--accent); }
+.btn--line:disabled, .btn--line:disabled:hover { background: transparent; color: var(--ink); border-color: var(--ink); }
 
 /* =====================================================================
    Hero (home)
@@ -323,7 +326,7 @@ h3 { font-size: 1.15rem; }
 .work { grid-column: span 4; }
 .work--wide { grid-column: span 8; }
 .work--tall { grid-column: span 4; }
-.work__img { overflow: hidden; background: #e6e0d4; }
+.work__img { overflow: hidden; background: #e0e6ee; }
 .work__img img { width: 100%; aspect-ratio: 4/5; object-fit: cover; transition: transform 1.1s var(--ease); }
 .work--wide .work__img img { aspect-ratio: 16/9; }
 .work:hover .work__img img { transform: scale(1.04); }
@@ -453,6 +456,8 @@ h3 { font-size: 1.15rem; }
 .form__note { font-size: .9rem; }
 .form__note.is-success { color: #1f7a3d; }
 .form__note.is-error { color: var(--accent); }
+.form__hint { font-size: .85rem; color: var(--ink-3); }
+.form__hint[hidden] { display: none; }
 
 /* =====================================================================
    CTA band
@@ -498,14 +503,14 @@ h3 { font-size: 1.15rem; }
   z-index: 1000;
   display: none;
   place-items: center;
-  background: rgba(18,16,14,.94);
+  background: rgba(14,26,43,.94);
   padding: 4vw;
 }
 .lightbox.is-open { display: grid; }
 .lightbox img { max-width: 92vw; max-height: 84vh; object-fit: contain; }
-.lightbox__cap { color: #cfc8bb; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; margin-top: 1rem; text-align: center; }
-.lightbox__close { position: fixed; top: 3vw; right: 3vw; color: #f3efe7; font-size: 1.4rem; }
-.lightbox__nav { position: fixed; top: 50%; transform: translateY(-50%); color: #f3efe7; font-size: 2rem; padding: 1rem; }
+.lightbox__cap { color: #c7d0dd; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; margin-top: 1rem; text-align: center; }
+.lightbox__close { position: fixed; top: 3vw; right: 3vw; color: #eef2f8; font-size: 1.4rem; }
+.lightbox__nav { position: fixed; top: 50%; transform: translateY(-50%); color: #eef2f8; font-size: 2rem; padding: 1rem; }
 .lightbox__nav--prev { left: 1vw; }
 .lightbox__nav--next { right: 1vw; }
 

@@ -156,32 +156,61 @@
     if (!form) return;
 
     var note = $('#formNote');
+    var hint = $('#formHint');
     var submitBtn = $('#submitBtn');
     var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var ENDPOINT = 'https://formsubmit.co/ajax/cizsamko@gmail.com';
+    var REQUIRED = ['name', 'email', 'message', 'gdpr'];
+
+    var valueOf = function (name) {
+      var field = form.querySelector('[name="' + name + '"]');
+      if (!field) return '';
+      if (field.type === 'checkbox') return field.checked ? (field.value || 'on') : '';
+      return (field.value || '').trim();
+    };
 
     var setError = function (name, message) {
       var field = form.querySelector('[name="' + name + '"]');
       if (field) {
-        var fieldWrap = field.closest('.field');
-        if (fieldWrap) field.classList && field.closest('.field').classList.toggle('has-error', !!message);
+        var wrap = field.closest('.field');
+        if (wrap) wrap.classList.toggle('has-error', !!message);
       }
       var slot = form.querySelector('[data-error-for="' + name + '"]');
       if (slot) slot.textContent = message || '';
     };
 
-    var validate = function () {
-      var data = new FormData(form);
-      var ok = true;
-      var name = (data.get('name') || '').trim();
-      var email = (data.get('email') || '').trim();
-      var message = (data.get('message') || '').trim();
-      var gdpr = data.get('gdpr');
+    /* Skontroluje jedno pole a vráti text chyby (alebo prázdny reťazec). */
+    var checkField = function (name) {
+      var value = valueOf(name);
+      if (name === 'name' && value.length < 2) return 'Prosím, vyplň meno.';
+      if (name === 'email' && !emailRe.test(value)) return 'Zadaj platný e-mail.';
+      if (name === 'message' && value.length < 5) return 'Napíš aspoň krátku správu.';
+      if (name === 'gdpr' && !value) return 'Potrebujeme tvoj súhlas.';
+      return '';
+    };
 
-      if (name.length < 2) { setError('name', 'Prosím, vyplň meno.'); ok = false; } else setError('name', '');
-      if (!emailRe.test(email)) { setError('email', 'Zadaj platný e-mail.'); ok = false; } else setError('email', '');
-      if (message.length < 5) { setError('message', 'Napíš aspoň krátku správu.'); ok = false; } else setError('message', '');
-      if (!gdpr) { setError('gdpr', 'Potrebujeme tvoj súhlas.'); ok = false; } else setError('gdpr', '');
+    var isComplete = function () {
+      return REQUIRED.every(function (name) { return !checkField(name); });
+    };
+
+    /* Tlačidlo sa odomkne až keď sú vyplnené všetky povinné polia. */
+    var syncButton = function () {
+      var ok = isComplete();
+      if (submitBtn) {
+        submitBtn.disabled = !ok;
+        submitBtn.setAttribute('aria-disabled', ok ? 'false' : 'true');
+      }
+      if (hint) hint.hidden = ok;
+      return ok;
+    };
+
+    var validate = function (showErrors) {
+      var ok = true;
+      REQUIRED.forEach(function (name) {
+        var message = checkField(name);
+        if (message) ok = false;
+        if (showErrors !== false) setError(name, message);
+      });
       return ok;
     };
 
@@ -194,7 +223,7 @@
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (!validate()) { showNote('Skontroluj označené polia.', 'error'); return; }
+      if (!validate(true)) { showNote('Skontroluj označené polia.', 'error'); syncButton(); return; }
 
       var data = new FormData(form);
       var payload = {
@@ -236,11 +265,25 @@
         .then(function () { if (submitBtn) submitBtn.classList.remove('is-loading'); });
     });
 
-    /* okamžité čistenie chýb pri písaní */
+    /* Živá kontrola: čistenie chýb, odomykanie tlačidla, chyba po opustení poľa */
     form.addEventListener('input', function (e) {
-      var name = e.target && e.target.getAttribute && e.target.getAttribute('name');
-      if (name && form.querySelector('[data-error-for="' + name + '"]')) setError(name, '');
+      var name = e.target && e.target.name;
+      if (name && REQUIRED.indexOf(name) !== -1 && !checkField(name)) setError(name, '');
+      syncButton();
     });
+    form.addEventListener('change', function (e) {
+      var name = e.target && e.target.name;
+      if (name && REQUIRED.indexOf(name) !== -1 && !checkField(name)) setError(name, '');
+      syncButton();
+    });
+    $$('input, select, textarea', form).forEach(function (field) {
+      field.addEventListener('blur', function () {
+        if (!field.name || REQUIRED.indexOf(field.name) === -1) return;
+        setError(field.name, checkField(field.name));
+      });
+    });
+
+    syncButton();
   }
 
   /* ---------- 5b. Predvyplnenie balíka z kariet ---------- */
