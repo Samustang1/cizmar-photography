@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SAMUEL Automotive Photography — main.js
+   Cizmar Photography — main.js
    Obsahuje: preloader, navigáciu, reveal animácie, počítadlá, filtrovanie
    galérie, lightbox a odoslanie rezervačného formulára (AJAX + fallback).
    ========================================================================== */

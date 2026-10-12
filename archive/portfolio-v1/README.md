@@ -1,4 +1,4 @@
-# SAMUEL Automotive Photography — portfólio + rezervačný formulár
+# Cizmar Photography — portfólio + rezervačný formulár
 
 Profesionálna jednostránková prezentácia pre automobilového fotografa.
 Obsahuje galériu s filtrami a lightboxom, sekcie O mne / Služby / Proces / Recenzie / FAQ

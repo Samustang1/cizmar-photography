@@ -1,8 +1,8 @@
-# SAMUEL — Automobilové fotoportfólio
+# Cizmar Photography — Automobilové fotoportfólio
 
 Samostatné webové portfólio automobilového fotografa (statické, viacstránkové).
 
-- **Live:** https://samustang1.github.io/laske-portfolio/
+- **Live:** https://samustang1.github.io/cizmar-photography/
 - **Zdroj stránky:** priečinok [`docs/`](docs/) — sem patria všetky HTML, CSS a JS súbory
 - **Archív:** `archive/portfolio-v1/` — pôvodná jednostranová verzia (nie je súčasťou live webu)
 

@@ -1,4 +1,4 @@
-# SAMUEL — Automobilové fotoportfólio
+# Cizmar Photography — Automobilové fotoportfólio
 
 Web pre automobilového fotografa: viacstránkové portfólio s galériou a rezervačným
 formulárom. Svetlý „magazínový" dizajn (papier, serif Fraunces, hairline linky).

@@ -1,6 +1,6 @@
 <?php
 /**
- * SAMUEL Automotive Photography — spracovanie rezervačného formulára.
+ * Cizmar Photography — spracovanie rezervačného formulára.
  *
  * Prijíma POST (multipart/form-data alebo application/x-www-form-urlencoded),
  * validuje údaje, uloží rezerváciu do JSONL súboru a odošle e-mail.
@@ -180,7 +180,7 @@ if (is_dir($dir) && is_writable($dir)) {
 $mailed = false;
 if (!empty($config['enable_mail'])) {
     $lines = array(
-        'Nová rezervácia z webu SAMUEL Automotive',
+        'Nová rezervácia z webu Cizmar Photography Automotive',
         str_repeat('-', 42),
         'Meno:     ' . $entry['name'],
         'E-mail:   ' . $entry['email'],
