@@ -42,8 +42,8 @@ Projekt je v `C:\MAMP\htdocs\php-ucenie`. Otvor
 
 - Fotky sú načítané z Unsplash s fallbackom na picsum. Vlastné fotky vlož do
   `assets/img/` a nahraď `src` v HTML.
-- E-mail a telefón sú v `kontakt.html` a v pätičke každej stránky.
-  Telefón `+421 000 000 000` je zatiaľ placeholder — nahraď reálnym číslom.
+- E-mail a telefón sú v `kontakt.html` a v pätičke každej stránky
+  (`cizsamko@gmail.com`, `+421 910 186 170`).
 - Sociálne siete majú `href` na `instagram.com` — nahraď svojím profilom.
 
 ## Nasadenie
