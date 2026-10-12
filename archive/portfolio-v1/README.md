@@ -1,4 +1,4 @@
-# LÁSKE Automotive Photography — portfólio + rezervačný formulár
+# SAMUEL Automotive Photography — portfólio + rezervačný formulár
 
 Profesionálna jednostránková prezentácia pre automobilového fotografa.
 Obsahuje galériu s filtrami a lightboxom, sekcie O mne / Služby / Proces / Recenzie / FAQ

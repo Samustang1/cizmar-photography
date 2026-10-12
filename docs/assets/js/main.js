@@ -1,5 +1,5 @@
 /* =====================================================================
-   LÁSKE — Automotive Photography  ·  v2 "Editorial"
+   SAMUEL — Automotive Photography  ·  v2 "Editorial"
    Vanilla JS: menu, reveal, filtre, lightbox, formulár (odoslanie e-mailu).
    Formulár odosiela cez FormSubmit — príjemca dostane e-mail v schránke,
    návštevník nikdy neopúšťa stránku (žiadny mailto klient).

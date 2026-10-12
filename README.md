@@ -1,4 +1,4 @@
-# LÁSKE — Automobilové fotoportfólio
+# SAMUEL — Automobilové fotoportfólio
 
 Samostatné webové portfólio automobilového fotografa (statické, viacstránkové).
 
