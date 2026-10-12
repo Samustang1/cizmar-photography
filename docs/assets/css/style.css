@@ -1,21 +1,22 @@
 /* =====================================================================
    Cizmar Photography  ·  v2 "Editorial" design
-   Svetlý magazínový štýl: papier, serif (Fraunces), hairline linky.
+   Svetlý magazínový štýl: chladný podklad, profesionálna modrá, serif (Fraunces), hairline linky.
    Úplne odlišný od pôvodného tmavého gradientového dizajnu.
    ===================================================================== */
 
 /* ---------- 1. Tokens -------------------------------------------------- */
 :root {
-  --paper:      #f2eee6;
-  --paper-2:    #faf7f1;
-  --paper-3:    #ece7dc;
-  --ink:        #14110d;
-  --ink-2:      #5c554b;
-  --ink-3:      #8a8175;
-  --line:       #ddd5c6;
-  --line-2:     #c8bda8;
-  --accent:     #d13a1c;
-  --accent-ink: #8c2110;
+  --paper:      #f4f5f8;
+  --paper-2:    #eaeef4;
+  --paper-3:    #e0e6ee;
+  --ink:        #0e1a2b;
+  --ink-2:      #4a5568;
+  --ink-3:      #8b96a6;
+  --line:       #d9e0ea;
+  --line-2:     #bcc7d6;
+  --accent:     #1d4ed8;
+  --accent-ink: #1e40af;
+  --accent-soft: rgba(29, 78, 216, .09);
 
   --serif: "Fraunces", Georgia, "Times New Roman", serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -32,6 +33,8 @@ img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
 ul { list-style: none; }
+::selection { background: var(--accent); color: #fff; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 body {
   font-family: var(--sans);
@@ -232,12 +235,12 @@ h3 { font-size: 1.15rem; }
   border: 1px solid var(--ink);
   transition: background .3s, color .3s, border-color .3s, transform .3s;
 }
-.btn--solid { background: var(--ink); color: var(--paper); }
-.btn--solid:hover { background: var(--accent); border-color: var(--accent); }
+.btn--solid { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn--solid:hover { background: var(--accent-ink); border-color: var(--accent-ink); }
 .btn--line { background: transparent; color: var(--ink); }
-.btn--line:hover { background: var(--ink); color: var(--paper); }
-.btn--text { border: 0; padding: 0 0 .35rem; border-bottom: 1px solid var(--ink); }
-.btn--text:hover { color: var(--accent); border-color: var(--accent); }
+.btn--line:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn--text { border: 0; padding: 0 0 .35rem; border-bottom: 1px solid var(--accent); color: var(--accent); }
+.btn--text:hover { color: var(--accent-ink); border-color: var(--accent-ink); }
 .btn--block { width: 100%; justify-content: center; }
 
 /* =====================================================================
@@ -454,11 +457,11 @@ h3 { font-size: 1.15rem; }
 /* =====================================================================
    CTA band
    ===================================================================== */
-.cta { background: var(--ink); color: var(--paper); padding: clamp(3rem, 7vw, 6rem) 0; }
+.cta { background: #0e1f3d; color: #eef2f8; padding: clamp(3rem, 7vw, 6rem) 0; }
 .cta h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 5vw, 4rem); line-height: 1; }
-.cta h2 em { font-style: italic; color: var(--accent); }
-.cta .btn--line { border-color: rgba(243,239,231,.5); color: var(--paper); }
-.cta .btn--line:hover { background: var(--paper); color: var(--ink); }
+.cta h2 em { font-style: italic; color: #7ea8ff; }
+.cta .btn--line { border-color: rgba(238,242,248,.45); color: #eef2f8; }
+.cta .btn--line:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
 
 /* =====================================================================
    Page hero (subpages)
