@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/v3.css?v=3">
+  <link rel="stylesheet" href="assets/css/v3.css?v=4">
 </head>
 <body>
 
@@ -45,11 +45,11 @@
     <section class="hero" id="home">
       <div class="wrap hero__grid">
         <div class="hero__text reveal">
-          <p class="tag"><i></i> Automobilová fotografia · Slovensko</p>
+          <span class="pill"><i></i> Prijímam rezervácie · Slovensko</span>
           <h1 class="hero__title">Svetlo, kov<br>a <em>rýchlosť</em>.</h1>
           <p class="lead">
-            Som začínajúci fotograf áut. Rád nafotím to tvoje — prirodzene,
-            bez klišé a bez zbytočnej vaty.
+            Automobilová fotografia, ktorá upúta na prvý pohľad — prirodzené svetlo,
+            čisté línie a detaily, ktoré vyniknú.
           </p>
           <div class="actions">
             <a class="btn btn--neon" href="#kontakt">Rezervovať fotenie</a>
@@ -78,6 +78,22 @@
       </div>
       <div class="scroll-hint" aria-hidden="true"><span></span></div>
     </section>
+
+    <!-- ============ TICKER ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <div class="marquee__group">
+          <span>Exteriér</span><span>·</span><span>Interiér</span><span>·</span>
+          <span>Detaily</span><span>·</span><span>Nočná</span><span>·</span>
+          <span>Prirodzené svetlo</span><span>·</span><span>Slovensko</span><span>·</span>
+        </div>
+        <div class="marquee__group">
+          <span>Exteriér</span><span>·</span><span>Interiér</span><span>·</span>
+          <span>Detaily</span><span>·</span><span>Nočná</span><span>·</span>
+          <span>Prirodzené svetlo</span><span>·</span><span>Slovensko</span><span>·</span>
+        </div>
+      </div>
+    </div>
 
     <!-- ============ PORTFOLIO ============ -->
     <section class="section" id="prace">
@@ -316,6 +332,17 @@
       </div>
     </section>
 
+    <!-- ============ CTA BAND ============ -->
+    <section class="cta-band">
+      <div class="wrap cta-band__inner reveal">
+        <div>
+          <p class="tag"><i></i> Pripravený?</p>
+          <h2 class="h2">Daj svojmu autu <em>záber</em>, ktorý si zapamätajú.</h2>
+        </div>
+        <a class="btn btn--neon" href="#kontakt">Rezervovať fotenie</a>
+      </div>
+    </section>
+
   </main>
 
   <!-- ============ FOOTER ============ -->
@@ -325,7 +352,8 @@
       <p class="footer__txt">Automobilová fotografia — prirodzene, bez klišé. Fotím na Slovensku.</p>
       <div class="footer__meta">
         <span>© <span id="year">2026</span> Cizmar Photography</span>
-        <span><a href="v2/index.html">‹ Staršia verzia (v2)</a></span>
+        <span><a href="mailto:cizsamko@gmail.com">cizsamko@gmail.com</a></span>
+        <span><a href="tel:+421910186170">+421 910 186 170</a></span>
       </div>
     </div>
   </footer>

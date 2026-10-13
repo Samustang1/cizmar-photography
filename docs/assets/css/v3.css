@@ -215,9 +215,46 @@ img { display: block; max-width: 100%; }
   margin: 0 0 1.4rem;
   text-shadow: 0 0 40px rgba(46, 230, 255, .18);
 }
-.hero__title em { font-style: normal; color: var(--neon); text-shadow: 0 0 30px rgba(46,230,255,.6); }
+.hero__title em {
+  font-style: normal; color: transparent;
+  background: linear-gradient(120deg, var(--neon), #8b5cf6 62%, var(--magenta));
+  -webkit-background-clip: text; background-clip: text;
+  filter: drop-shadow(0 0 26px rgba(46,230,255,.45));
+}
+
+.pill {
+  display: inline-flex; align-items: center; gap: .55rem;
+  font-family: var(--font-display); font-size: .64rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--text);
+  background: rgba(46,230,255,.07); border: 1px solid var(--line-strong);
+  border-radius: 999px; padding: .45rem .95rem; margin-bottom: 1.4rem;
+}
+.pill i {
+  width: 7px; height: 7px; border-radius: 50%; background: #4ade80;
+  box-shadow: 0 0 12px #4ade80; animation: pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse { 50% { opacity: .35; } }
 
 .actions { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 2rem; }
+
+/* ---------- Bežiaci pás (ticker) ---------- */
+.marquee { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(8, 11, 20, .45); overflow: hidden; }
+.marquee__track { display: flex; width: max-content; animation: marquee 26s linear infinite; }
+.marquee:hover .marquee__track { animation-play-state: paused; }
+.marquee__group { display: flex; gap: 2.4rem; padding: 1rem 1.2rem; }
+.marquee__group span { font-family: var(--font-display); font-size: .76rem; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.marquee__group span:nth-child(even) { color: var(--neon); }
+@keyframes marquee { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; } }
+
+/* ---------- CTA pás ---------- */
+.cta-band {
+  padding: clamp(3.5rem, 8vw, 6rem) 0; border-top: 1px solid var(--line);
+  background: radial-gradient(ellipse 70% 130% at 50% 0%, rgba(46,230,255,.12), transparent 70%);
+}
+.cta-band__inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+.cta-band .h2 { font-size: clamp(1.7rem, 4vw, 2.7rem); margin: 0; }
+.cta-band .tag { margin-bottom: 1rem; }
 
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 3rem; }
 .stats strong { display: block; font-family: var(--font-display); font-size: .82rem; letter-spacing: .05em; color: var(--text); }
