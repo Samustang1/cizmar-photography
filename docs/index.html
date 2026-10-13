@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/v3.css?v=2">
+  <link rel="stylesheet" href="assets/css/v3.css?v=3">
 </head>
 <body>
 
@@ -202,7 +202,7 @@
         <header class="head reveal">
           <p class="tag"><i></i> Rezervácia</p>
           <h2 class="h2">Nafotíme <em>tvoje auto</em>.</h2>
-          <p class="lead lead--center">Napíš mi, kde a kedy ti to vyhovuje — ozvem sa čo najskôr.</p>
+          <p class="lead lead--center">Vyplň krátky formulár — ozvem sa ti čo najskôr. Alebo mi napíš rovno na e-mail.</p>
         </header>
 
         <div class="contact reveal">
@@ -214,13 +214,103 @@
           </div>
 
           <div class="reserve-box">
-            <p class="tag"><i></i> Rezervácia</p>
-            <p class="lead" style="margin-bottom:1.4rem">Napíš mi, kde a kedy ti to vyhovuje — ozvem sa čo najskôr.</p>
-            <div class="actions">
-              <a class="btn btn--neon" href="mailto:cizsamko@gmail.com">Napísať e-mail</a>
-              <a class="btn btn--ghost" href="tel:+421910186170">Zavolať</a>
-            </div>
-            <p class="lead" style="margin-top:1.2rem"><a href="v2/kontakt.html" style="color:var(--neon)">Alebo vyplň rezervačný formulár ›</a></p>
+            <p class="tag"><i></i> Rezervačný formulár</p>
+            <form class="vform" id="bookingForm"
+                  action="https://formsubmit.co/cizsamko@gmail.com"
+                  method="POST" novalidate>
+              <input type="hidden" name="_subject" value="Nová rezervácia fotenia — Cizmar Photography">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_next" value="https://samustang1.github.io/cizmar-photography/">
+              <div class="hp" aria-hidden="true">
+                <label>Nevypĺňaj<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label>
+              </div>
+
+              <div class="vform__row">
+                <div class="vfield">
+                  <label for="bk-name">Meno *</label>
+                  <input id="bk-name" name="name" type="text" required autocomplete="name">
+                  <span class="vfield__error" data-error-for="name"></span>
+                </div>
+                <div class="vfield">
+                  <label for="bk-email">E-mail *</label>
+                  <input id="bk-email" name="email" type="email" required autocomplete="email">
+                  <span class="vfield__error" data-error-for="email"></span>
+                </div>
+              </div>
+
+              <div class="vform__row">
+                <div class="vfield">
+                  <label for="bk-phone">Telefón</label>
+                  <div class="vphone">
+                    <select id="bk-phoneCode" name="phoneCode" aria-label="Predvoľba krajiny">
+                      <option value="+421" selected>+421 (SK)</option>
+                      <option value="+420">+420 (CZ)</option>
+                      <option value="+43">+43 (AT)</option>
+                      <option value="+48">+48 (PL)</option>
+                      <option value="+36">+36 (HU)</option>
+                      <option value="+380">+380 (UA)</option>
+                      <option value="+49">+49 (DE)</option>
+                      <option value="+44">+44 (UK)</option>
+                      <option value="+1">+1 (US)</option>
+                    </select>
+                    <input id="bk-phone" name="phone" type="tel" inputmode="numeric"
+                           autocomplete="tel" placeholder="910 186 170">
+                  </div>
+                  <span class="vfield__error" data-error-for="phone"></span>
+                </div>
+                <div class="vfield">
+                  <label for="bk-car">Auto</label>
+                  <input id="bk-car" name="car" type="text" placeholder="značka / model">
+                  <span class="vfield__error" data-error-for="car"></span>
+                </div>
+              </div>
+
+              <div class="vform__row">
+                <div class="vfield">
+                  <label for="bk-date">Dátum</label>
+                  <input id="bk-date" name="date" type="date">
+                </div>
+                <div class="vfield">
+                  <label for="bk-time">Čas</label>
+                  <input id="bk-time" name="time" type="time" step="900">
+                </div>
+              </div>
+
+              <div class="vform__row">
+                <div class="vfield">
+                  <label for="bk-location">Lokalita</label>
+                  <input id="bk-location" name="location" type="text" placeholder="mesto / oblasť">
+                </div>
+                <div class="vfield">
+                  <label for="bk-package">Služba</label>
+                  <select id="bk-package" name="package">
+                    <option value="">— vyber —</option>
+                    <option value="Fotenie auta">Fotenie auta</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="vfield">
+                <label for="bk-message">Správa *</label>
+                <textarea id="bk-message" name="message" required placeholder="Napíš, čo máš v pláne — miesto, auto, predstava…"></textarea>
+                <span class="vfield__error" data-error-for="message"></span>
+              </div>
+
+              <div class="vfield">
+                <label class="vcheck" for="bk-gdpr">
+                  <input id="bk-gdpr" name="gdpr" type="checkbox" value="súhlasím" required>
+                  <span>Súhlasím so spracovaním mojich údajov za účelom odpovede na požiadavku. *</span>
+                </label>
+                <span class="vfield__error" data-error-for="gdpr"></span>
+              </div>
+
+              <div class="vform__submit">
+                <button class="btn btn--neon" id="submitBtn" type="submit">Odoslať rezerváciu</button>
+              </div>
+              <p class="vform__hint" id="formHint" hidden>Doplň povinné polia označené <span aria-hidden="true">*</span> a tlačidlo sa odomkne.</p>
+              <p class="vform__note" id="formNote" role="status" aria-live="polite"></p>
+            </form>
           </div>
         </div>
       </div>
@@ -240,6 +330,21 @@
     </div>
   </footer>
 
-  <script src="assets/js/v3.js?v=2" defer></script>
+  <!-- ============ LIGHTBOX ============ -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Náhľad fotografie">
+    <button class="lightbox__close" id="lbClose" type="button" aria-label="Zavrieť">×</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" type="button" aria-label="Predchádzajúca fotografia">‹</button>
+    <figure class="lightbox__figure">
+      <img id="lbImg" alt="">
+      <figcaption id="lbCap"></figcaption>
+    </figure>
+    <button class="lightbox__nav lightbox__nav--next" id="lbNext" type="button" aria-label="Ďalšia fotografia">›</button>
+  </div>
+
+  <!-- ============ NAHOR ============ -->
+  <button class="to-top" id="toTop" type="button" aria-label="Nahor">↑</button>
+
+  <script src="assets/js/v3.js?v=3" defer></script>
+  <script src="assets/js/v3-form.js?v=1" defer></script>
 </body>
 </html>

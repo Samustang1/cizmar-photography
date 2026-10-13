@@ -226,6 +226,75 @@
     }, { passive: true });
   }
 
+  /* ===================== LIGHTBOX PORTFÓLIA ===================== */
+  var lb = document.getElementById('lightbox');
+  if (lb && cards.length) {
+    var lbImg = document.getElementById('lbImg');
+    var lbCap = document.getElementById('lbCap');
+    var lbCurrent = 0;
+    var visibleCards = function () {
+      return cards.filter(function (c) { return !c.classList.contains('is-hidden'); });
+    };
+    var renderLb = function (list, index) {
+      if (!list.length) return;
+      lbCurrent = (index + list.length) % list.length;
+      var fig = list[lbCurrent];
+      var img = fig.querySelector('img');
+      if (!img) return;
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt || '';
+      var cat = fig.querySelector('figcaption span');
+      var name = fig.querySelector('figcaption strong');
+      if (lbCap) lbCap.textContent = [cat ? cat.textContent : '', name ? name.textContent : ''].join(' — ');
+    };
+    var openLb = function (fig) {
+      var list = visibleCards();
+      renderLb(list, list.indexOf(fig));
+      lb.classList.add('is-open');
+      lb.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+    var closeLb = function () {
+      lb.classList.remove('is-open');
+      lb.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+    cards.forEach(function (fig) {
+      fig.addEventListener('click', function () { openLb(fig); });
+      fig.setAttribute('tabindex', '0');
+      fig.setAttribute('role', 'button');
+      fig.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLb(fig); }
+      });
+    });
+    var lbPrev = document.getElementById('lbPrev');
+    var lbNext = document.getElementById('lbNext');
+    var lbClose = document.getElementById('lbClose');
+    if (lbPrev) lbPrev.addEventListener('click', function () { renderLb(visibleCards(), lbCurrent - 1); });
+    if (lbNext) lbNext.addEventListener('click', function () { renderLb(visibleCards(), lbCurrent + 1); });
+    if (lbClose) lbClose.addEventListener('click', closeLb);
+    lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+    document.addEventListener('keydown', function (e) {
+      if (!lb.classList.contains('is-open')) return;
+      if (e.key === 'Escape') closeLb();
+      if (e.key === 'ArrowLeft') renderLb(visibleCards(), lbCurrent - 1);
+      if (e.key === 'ArrowRight') renderLb(visibleCards(), lbCurrent + 1);
+    });
+  }
+
+  /* ===================== TLAČIDLO NAHOR ===================== */
+  var toTop = document.getElementById('toTop');
+  if (toTop) {
+    var toggleTop = function () {
+      toTop.classList.toggle('is-visible', (window.scrollY || window.pageYOffset) > 600);
+    };
+    window.addEventListener('scroll', toggleTop, { passive: true });
+    toggleTop();
+    toTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    });
+  }
+
   /* ===================== ČASTICOVÉ POZADIE ===================== */
   var canvas = document.getElementById('fx');
   if (!canvas) return;

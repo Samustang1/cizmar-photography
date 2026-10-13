@@ -349,6 +349,102 @@ img { display: block; max-width: 100%; }
 .footer__meta { display: flex; gap: 1.4rem; font-size: .82rem; color: var(--muted); flex-wrap: wrap; justify-content: center; }
 .footer__meta a { color: var(--neon); }
 
+/* ============ FORMULÁR (v3 dark) ============ */
+.vform { display: grid; gap: 1rem; margin-top: 1.2rem; }
+.vform__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.vfield { display: grid; gap: .45rem; }
+.vfield > label {
+  font-family: var(--font-display); font-size: .64rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted);
+}
+.vform input[type="text"], .vform input[type="email"], .vform input[type="tel"],
+.vform input[type="date"], .vform input[type="time"], .vform select, .vform textarea {
+  width: 100%; font: inherit; font-size: .95rem; color: var(--text);
+  background: rgba(8, 12, 22, .7); border: 1px solid var(--line);
+  border-radius: 10px; padding: .7rem .85rem; transition: border-color .2s, box-shadow .2s, background .2s;
+}
+.vform textarea { min-height: 120px; resize: vertical; }
+.vform input::placeholder, .vform textarea::placeholder { color: #5b6885; }
+.vform input[type="date"], .vform input[type="time"] { color-scheme: dark; }
+.vform select {
+  appearance: none; -webkit-appearance: none; -moz-appearance: none; padding-right: 2.2rem;
+  background-image: linear-gradient(45deg, transparent 50%, var(--neon) 50%),
+                    linear-gradient(135deg, var(--neon) 50%, transparent 50%);
+  background-position: calc(100% - 18px) calc(50% - 2px), calc(100% - 13px) calc(50% - 2px);
+  background-size: 5px 5px, 5px 5px; background-repeat: no-repeat;
+}
+.vform input:focus, .vform select:focus, .vform textarea:focus {
+  outline: none; border-color: var(--neon); background: rgba(10, 16, 30, .85);
+  box-shadow: 0 0 0 1px rgba(46,230,255,.5), 0 0 22px rgba(46,230,255,.25);
+}
+.vphone { display: grid; grid-template-columns: 7.5rem 1fr; gap: .6rem; }
+.vfield.has-error input, .vfield.has-error select, .vfield.has-error textarea {
+  border-color: var(--magenta); box-shadow: 0 0 0 1px rgba(255,92,240,.5);
+}
+.vfield__error { font-size: .78rem; color: var(--magenta); }
+.vfield__error:empty { display: none; }
+.vcheck { display: flex; gap: .6rem; align-items: flex-start; font-size: .88rem; color: var(--muted); cursor: pointer; }
+.vcheck input { width: auto; margin-top: .2rem; accent-color: var(--neon); }
+.vform__submit { margin-top: .3rem; }
+.vform__submit .btn { width: 100%; }
+.vform__submit .btn[disabled] { opacity: .45; cursor: not-allowed; box-shadow: none; }
+.vform__submit .btn.is-loading { opacity: .7; pointer-events: none; }
+.vform__hint { font-size: .82rem; color: var(--muted); }
+.vform__hint[hidden] { display: none; }
+.vform__note { font-size: .9rem; min-height: 1.2rem; }
+.vform__note.is-success { color: #4ade80; }
+.vform__note.is-error { color: var(--magenta); }
+.vform .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+@media (max-width: 640px) {
+  .vform__row { grid-template-columns: 1fr; }
+  .vphone { grid-template-columns: 6.5rem 1fr; }
+}
+
+/* ============ LIGHTBOX ============ */
+.card { cursor: zoom-in; }
+.lightbox {
+  position: fixed; inset: 0; z-index: 80; display: none;
+  align-items: center; justify-content: center;
+  background: rgba(3, 5, 10, .92); backdrop-filter: blur(6px);
+}
+.lightbox.is-open { display: flex; }
+.lightbox__figure { position: relative; max-width: min(92vw, 1100px); max-height: 88vh; }
+.lightbox__figure img {
+  max-width: 100%; max-height: 80vh; border-radius: 12px;
+  border: 1px solid var(--line-strong); box-shadow: 0 0 60px rgba(46,230,255,.18);
+}
+.lightbox__figure figcaption {
+  text-align: center; margin-top: .8rem; color: var(--neon);
+  font-family: var(--font-display); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
+}
+.lightbox__close {
+  position: absolute; top: 1rem; right: 1.2rem; z-index: 2;
+  font-size: 2rem; line-height: 1; background: transparent; border: 0;
+  color: var(--text); cursor: pointer;
+}
+.lightbox__close:hover { color: var(--neon); }
+.lightbox__nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 1px solid var(--line-strong); background: rgba(8, 11, 20, .6);
+  color: var(--text); font-size: 1.6rem; line-height: 1; cursor: pointer; transition: .2s;
+}
+.lightbox__nav:hover { border-color: var(--neon); color: var(--neon); box-shadow: 0 0 20px rgba(46,230,255,.4); }
+.lightbox__nav--prev { left: 1.2rem; }
+.lightbox__nav--next { right: 1.2rem; }
+
+/* ============ NAHOR ============ */
+.to-top {
+  position: fixed; right: 1.4rem; bottom: 1.4rem; z-index: 55;
+  width: 46px; height: 46px; border-radius: 50%;
+  border: 1px solid var(--line-strong); background: rgba(8, 11, 20, .8);
+  color: var(--neon); font-size: 1.2rem; cursor: pointer;
+  opacity: 0; pointer-events: none; transition: .3s; backdrop-filter: blur(8px);
+}
+.to-top.is-visible { opacity: 1; pointer-events: auto; }
+.to-top:hover { border-color: var(--neon); box-shadow: 0 0 24px rgba(46,230,255,.5); }
+
 /* ============ REVEAL ============ */
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.is-in { opacity: 1; transform: none; }
