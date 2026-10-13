@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/v3.css">
+  <link rel="stylesheet" href="assets/css/v3.css?v=2">
 </head>
 <body>
 
@@ -32,7 +32,7 @@
       <a href="#sluzby">Služby</a>
       <a href="#o-mne">O mne</a>
       <a href="#kontakt">Kontakt</a>
-      <a class="btn btn--neon" href="https://cal.com/cizmar.photo" target="_blank" rel="noopener">Rezervovať</a>
+      <a class="btn btn--neon" href="#kontakt">Rezervovať</a>
     </nav>
     <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Otvoriť menu">
       <span></span><span></span><span></span>
@@ -52,7 +52,7 @@
             bez klišé a bez zbytočnej vaty.
           </p>
           <div class="actions">
-            <a class="btn btn--neon" href="https://cal.com/cizmar.photo" target="_blank" rel="noopener">Rezervovať fotenie</a>
+            <a class="btn btn--neon" href="../kontakt.html">Rezervovať fotenie</a>
             <a class="btn btn--ghost" href="#prace">Pozrieť portfólio</a>
           </div>
           <div class="stats">
@@ -202,7 +202,7 @@
         <header class="head reveal">
           <p class="tag"><i></i> Rezervácia</p>
           <h2 class="h2">Nafotíme <em>tvoje auto</em>.</h2>
-          <p class="lead lead--center">Vyber si voľný termín online alebo mi napíš správu.</p>
+          <p class="lead lead--center">Napíš mi, kde a kedy ti to vyhovuje — ozvem sa čo najskôr.</p>
         </header>
 
         <div class="contact reveal">
@@ -213,9 +213,13 @@
             <div class="info"><span>Instagram</span><a href="https://www.instagram.com/" target="_blank" rel="noopener">@cizmar.photo</a></div>
           </div>
 
-          <div class="cal-wrap">
-            <div id="cal-inline" class="cal-inline"></div>
-            <p class="hint">Nezobrazuje sa kalendár? <a href="https://cal.com/cizmar.photo" target="_blank" rel="noopener">Otvor rezerváciu v novom okne</a>.</p>
+          <div class="reserve-box">
+            <p class="tag"><i></i> Rezervácia</p>
+            <p class="lead" style="margin-bottom:1.4rem">Napíš mi, kde a kedy ti to vyhovuje — ozvem sa čo najskôr.</p>
+            <div class="actions">
+              <a class="btn btn--neon" href="mailto:cizsamko@gmail.com">Napísať e-mail</a>
+              <a class="btn btn--ghost" href="tel:+421910186170">Zavolať</a>
+            </div>
           </div>
         </div>
       </div>
@@ -230,38 +234,11 @@
       <p class="footer__txt">Automobilová fotografia — prirodzene, bez klišé. Fotím na Slovensku.</p>
       <div class="footer__meta">
         <span>© <span id="year">2026</span> Cizmar Photography</span>
-        <span><a href="../../index.html">‹ Späť na hlavnú stránku</a></span>
+        <span><a href="../index.html">‹ Späť na hlavnú stránku</a></span>
       </div>
     </div>
   </footer>
 
-  <script type="text/javascript">
-    (function (C, A, L) {
-      var p = function (a, ar) { a.q.push(ar); };
-      var d = C.document;
-      C.Cal = C.Cal || function () {
-        var cal = C.Cal, ar = arguments;
-        if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
-        if (ar[0] === L) {
-          var api = function () { p(api, arguments); };
-          var namespace = ar[1];
-          api.q = api.q || [];
-          if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); }
-          else p(cal, ar);
-          return;
-        }
-        p(cal, ar);
-      };
-    })(window, "https://app.cal.com/embed/embed.js", "init");
-
-    Cal("init", "cizmar3", { origin: "https://cal.com" });
-    Cal.ns["cizmar3"]("inline", {
-      elementOrSelector: "#cal-inline",
-      config: { layout: "month_view", theme: "dark" },
-      calLink: "cizmar.photo"
-    });
-    Cal.ns["cizmar3"]("ui", { layout: "month_view", theme: "dark" });
-  </script>
-  <script src="assets/js/v3.js" defer></script>
+  <script src="assets/js/v3.js?v=2" defer></script>
 </body>
 </html>
