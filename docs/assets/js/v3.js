@@ -334,7 +334,7 @@
       if (p.y < 0) p.y = H; else if (p.y > H) p.y = 0;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(46,230,255,0.55)';
+      ctx.fillStyle = 'rgba(79,70,229,0.42)';
       ctx.fill();
     }
     var link = 150 * dpr * dpr;
@@ -344,11 +344,11 @@
         var dy = particles[i].y - particles[j].y;
         var dist2 = dx * dx + dy * dy;
         if (dist2 < link) {
-          var alpha = 0.12 * (1 - dist2 / link);
+          var alpha = 0.18 * (1 - dist2 / link);
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = 'rgba(70,150,255,' + alpha.toFixed(3) + ')';
+          ctx.strokeStyle = 'rgba(236,72,153,' + alpha.toFixed(3) + ')';
           ctx.lineWidth = dpr * 0.6;
           ctx.stroke();
         }
