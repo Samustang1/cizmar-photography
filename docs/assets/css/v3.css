@@ -1,7 +1,7 @@
-/* ============================================================
-   Cizmar Photography — V3 · EDITORIAL
-   Automobilová & motorsportová fotografia — Poprad
-   Svetlý, foto-first editorial dizajn.
+﻿/* ============================================================
+   Cizmar Photography â€” V3 Â· EDITORIAL
+   AutomobilovĂˇ & motorsportovĂˇ fotografia â€” Poprad
+   SvetlĂ˝, foto-first editorial dizajn.
    ============================================================ */
 
 :root {
@@ -131,7 +131,7 @@ ul { list-style: none; }
   position: absolute; inset: 0; z-index: 1;
   background: linear-gradient(180deg, rgba(0, 0, 0, .55) 0%, rgba(0, 0, 0, .12) 42%, rgba(0, 0, 0, .78) 100%);
 }
-.hero__inner { position: relative; z-index: 2; width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 8rem 1.6rem 6rem; }
+.hero__inner { position: relative; z-index: 2; width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 8rem 1.6rem 5rem; }
 .hero__title {
   font-family: var(--font-display); font-weight: 900; color: #fff;
   font-size: clamp(2.6rem, 8.5vw, 6.4rem); line-height: .98; letter-spacing: -.02em;
@@ -140,8 +140,6 @@ ul { list-style: none; }
 .hero__lead { color: rgba(255, 255, 255, .82); font-size: clamp(1rem, 1.6vw, 1.15rem); max-width: 52ch; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 2.2rem; }
 
-.hero__scroll { position: absolute; left: 50%; bottom: 1.8rem; transform: translateX(-50%); z-index: 2; width: 22px; height: 36px; border: 1px solid rgba(255, 255, 255, .5); border-radius: 999px; }
-.hero__scroll span { position: absolute; left: 50%; top: 7px; width: 2px; height: 7px; border-radius: 2px; background: #fff; transform: translateX(-50%); animation: scrollDown 1.7s infinite; }
 @keyframes scrollDown { 0% { opacity: 0; transform: translate(-50%, 0); } 40% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, 12px); } }
 
 /* ============ INTRO ============ */
@@ -194,7 +192,7 @@ ul { list-style: none; }
 .card.is-hidden { display: none; }
 @media (hover: none) { .card figcaption { opacity: 1; transform: none; } }
 
-/* ============ SLUŽBY ============ */
+/* ============ SLUĹ˝BY ============ */
 .service { display: grid; grid-template-columns: 70px 1fr auto; gap: 1.6rem; align-items: start; padding: 2.4rem 0; border-top: 1px solid var(--line); }
 .service:last-of-type { border-bottom: 1px solid var(--line); }
 .service__num { font-family: var(--font-display); font-size: .9rem; letter-spacing: .1em; color: var(--accent); padding-top: .35rem; }
@@ -202,7 +200,7 @@ ul { list-style: none; }
 .service__body p { color: var(--muted); max-width: 62ch; }
 .service__body ul { margin-top: 1rem; display: grid; gap: .4rem; }
 .service__body li { color: var(--ink-soft); font-size: .95rem; padding-left: 1.4rem; position: relative; }
-.service__body li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+.service__body li::before { content: "â€”"; position: absolute; left: 0; color: var(--accent); }
 .service__price { font-family: var(--font-display); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; border: 1px solid var(--line); border-radius: 999px; padding: .5rem 1.1rem; white-space: nowrap; }
 
 .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.6rem; margin-top: 3.5rem; }
@@ -222,7 +220,7 @@ ul { list-style: none; }
 .link-arrow { display: inline-flex; align-items: center; gap: .5rem; margin-top: .6rem; padding-bottom: .3rem; border-bottom: 1px solid var(--ink); font-family: var(--font-display); font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; transition: gap .2s, color .2s, border-color .2s; }
 .link-arrow:hover { color: var(--accent); border-color: var(--accent); gap: .95rem; }
 
-/* ============ KONTAKT (tmavá) ============ */
+/* ============ KONTAKT (tmavĂˇ) ============ */
 .contact { background: var(--dark); color: #fff; padding: 7rem 0; }
 .contact__grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 4rem; align-items: start; }
 .contact .kicker { margin-bottom: .9rem; }
@@ -233,7 +231,7 @@ ul { list-style: none; }
 .contact__list a, .contact__list b { color: #fff; font-weight: 500; }
 .contact__list a:hover { color: var(--accent); }
 
-/* ============ FORMULÁR ============ */
+/* ============ FORMULĂR ============ */
 .reserve-box { background: #fff; border-radius: 6px; padding: 2rem; color: var(--ink); }
 .reserve-box .kicker { display: block; margin-bottom: 1.2rem; }
 
@@ -357,7 +355,7 @@ ul { list-style: none; }
   .hero__inner { padding-bottom: 5rem; }
 }
 
-/* ============ KÓD / SCRIPTY ============ */
+/* ============ KĂ“D / SCRIPTY ============ */
 .code__intro { max-width: 48ch; font-size: .95rem; }
 .code__intro b { color: var(--ink); font-weight: 600; }
 
@@ -380,7 +378,7 @@ ul { list-style: none; }
   font-size: .84rem; line-height: 1.75; color: #e6e6e8; white-space: pre;
 }
 
-/* highlight.js — vlastná tmavá téma */
+/* highlight.js â€” vlastnĂˇ tmavĂˇ tĂ©ma */
 .code__panel .hljs-comment, .code__panel .hljs-quote { color: #6b7280; font-style: italic; }
 .code__panel .hljs-keyword, .code__panel .hljs-selector-tag, .code__panel .hljs-literal,
 .code__panel .hljs-section, .code__panel .hljs-doctag, .code__panel .hljs-type,
@@ -394,12 +392,12 @@ ul { list-style: none; }
 .code__panel .hljs-meta, .code__panel .hljs-tag { color: #8b949e; }
 .code__panel .hljs-operator, .code__panel .hljs-punctuation { color: #c9d1d9; }
 
-/* ============ ŽIVÉ DEMÁ ============ */
+/* ============ Ĺ˝IVĂ‰ DEMĂ ============ */
 .demos { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 1.6rem; }
 .demo { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 1.5rem; display: flex; flex-direction: column; }
 .demo .kicker { display: block; margin-bottom: 1.1rem; }
 .demo__note { font-size: .82rem; margin-top: auto; padding-top: 1rem; }
-.demo__mount:empty::after { content: "Načítavam React…"; color: var(--muted); font-size: .9rem; }
+.demo__mount:empty::after { content: "NaÄŤĂ­tavam Reactâ€¦"; color: var(--muted); font-size: .9rem; }
 
 .rdemo__media { margin: 0 0 1rem; border-radius: 6px; overflow: hidden; background: #000; }
 .rdemo__media img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; transition: filter .45s ease; }
@@ -422,7 +420,7 @@ ul { list-style: none; }
 .tw__caret { display: inline-block; width: 2px; height: 1em; background: var(--accent); margin-left: 3px; vertical-align: -2px; animation: twBlink 1s steps(1) infinite; }
 @keyframes twBlink { 50% { opacity: 0; } }
 
-/* ============ SÚBORY NA STIAHNUTIE ============ */
+/* ============ SĂšBORY NA STIAHNUTIE ============ */
 .code__files { margin-top: 2.6rem; border-top: 1px solid var(--line); padding-top: 1.6rem; }
 .code__files-title { display: block; margin-bottom: 1.1rem; }
 .code__files-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: .7rem; }

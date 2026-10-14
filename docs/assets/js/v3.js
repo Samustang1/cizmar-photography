@@ -170,48 +170,4 @@
     });
   }
 
-  /* ===================== UKÁŽKY KÓDU (TABY) ===================== */
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.code__tab'));
-  var panels = Array.prototype.slice.call(document.querySelectorAll('.code__panel'));
-  tabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      var lang = tab.getAttribute('data-lang');
-      tabs.forEach(function (t) {
-        var on = t === tab;
-        t.classList.toggle('is-active', on);
-        t.setAttribute('aria-selected', on ? 'true' : 'false');
-      });
-      panels.forEach(function (p) {
-        p.classList.toggle('is-active', p.getAttribute('data-lang') === lang);
-      });
-    });
-  });
-
-  /* ===================== ZVÝRAZNENIE SYNTAXE ===================== */
-  if (window.hljs && typeof window.hljs.highlightAll === 'function') {
-    try { window.hljs.highlightAll(); } catch (e) { /* ticho zlyhá */ }
-  }
-
-  /* ===================== TYPOVÝ EFEKT (VANILLA JS DEMO) ===================== */
-  var tw = document.getElementById('typewriter');
-  if (tw) {
-    var words = (tw.getAttribute('data-words') || '').split('|').filter(Boolean);
-    if (!words.length) words = ['autá'];
-    if (reduce) {
-      tw.textContent = words[0];
-    } else {
-      var wi = 0, ci = 0, deleting = false;
-      var step = function () {
-        var word = words[wi];
-        ci += deleting ? -1 : 1;
-        tw.textContent = word.slice(0, ci);
-        var delay = deleting ? 45 : 95;
-        if (!deleting && ci === word.length) { deleting = true; delay = 1400; }
-        else if (deleting && ci === 0) { deleting = false; wi = (wi + 1) % words.length; delay = 320; }
-        setTimeout(step, delay);
-      };
-      tw.textContent = '';
-      setTimeout(step, 500);
-    }
-  }
 })();
