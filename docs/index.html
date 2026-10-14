@@ -3,81 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cizmar Photography — Automobilové fotenie</title>
-  <meta name="description" content="Futuristická automobilová fotografia. Svetlo, kov a rýchlosť — Cizmar Photography.">
-  <meta name="theme-color" content="#05060b">
+  <title>Cizmar Photography — Automobilová a motorsportová fotografia z Popradu</title>
+  <meta name="description" content="Automobilová a motorsportová fotografia z Popradu. Exteriér, interiér a detaily v prirodzenom svetle — Cizmar Photography.">
+  <meta name="theme-color" content="#f2f1ee">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Cizmar Photography — Automobilová fotografia">
-  <meta property="og:description" content="Futuristická automobilová fotografia. Rezervuj si fotenie.">
+  <meta property="og:title" content="Cizmar Photography — Automobilová a motorsportová fotografia">
+  <meta property="og:description" content="Automobilová a motorsportová fotografia z Popradu. Rezervuj si fotenie.">
   <meta property="og:image" content="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/v3.css?v=5">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/v3.css?v=7">
 </head>
 <body>
 
-  <canvas id="fx" aria-hidden="true"></canvas>
-  <div class="overlay overlay--grid" aria-hidden="true"></div>
-  <div class="overlay overlay--scan" aria-hidden="true"></div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
 
-  <!-- ============ HUD / HEADER ============ -->
-  <header class="hud" id="hud">
-    <a class="hud__brand" href="#home" aria-label="Cizmar Photography — domov">
-      <span class="hud__mark">CIZMAR<em>.</em></span>
-      <span class="hud__sub">Automotive Photography</span>
-    </a>
-    <nav class="hud__nav" id="nav" aria-label="Hlavná navigácia">
-      <a href="#prace">Práce</a>
-      <a href="#sluzby">Služby</a>
-      <a href="#o-mne">O mne</a>
-      <a href="#kontakt">Kontakt</a>
-      <a href="https://samustang1.github.io/cizmar-portfolio/" target="_blank" rel="noopener">Osobné portfólio ↗</a>
-      <a class="btn btn--neon" href="#kontakt">Rezervovať</a>
-    </nav>
-    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Otvoriť menu">
-      <span></span><span></span><span></span>
-    </button>
+  <!-- ============ HEADER ============ -->
+  <header class="site-head" id="siteHead">
+    <div class="site-head__inner">
+      <a class="brand" href="#home" aria-label="Cizmar Photography — domov">
+        <span class="brand__mark">CIZMAR</span>
+        <span class="brand__sub">Automotive Photography</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Hlavná navigácia">
+        <a href="#prace">Práce</a>
+        <a href="#sluzby">Služby</a>
+        <a href="#o-mne">O mne</a>
+        <a href="#kod">Kód</a>
+        <a href="https://samustang1.github.io/cizmar-portfolio/" target="_blank" rel="noopener">Portfólio ↗</a>
+        <a href="#kontakt">Kontakt</a>
+        <a class="nav__cta" href="#kontakt">Rezervovať</a>
+      </nav>
+
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Otvoriť menu">
+        <span></span><span></span>
+      </button>
+    </div>
   </header>
 
   <main id="main">
 
     <!-- ============ HERO ============ -->
     <section class="hero" id="home">
-      <div class="wrap hero__grid">
-        <div class="hero__text reveal">
-          <span class="pill"><i></i> Prijímam rezervácie · Slovensko</span>
-          <h1 class="hero__title">Svetlo, kov<br>a <em>rýchlosť</em>.</h1>
-          <p class="lead">
-            Automobilová fotografia, ktorá upúta na prvý pohľad — prirodzené svetlo,
-            čisté línie a detaily, ktoré vyniknú.
-          </p>
-          <div class="actions">
-            <a class="btn btn--neon" href="#kontakt">Rezervovať fotenie</a>
-            <a class="btn btn--ghost" href="#prace">Pozrieť portfólio</a>
-          </div>
-          <div class="stats">
-            <div><strong>Fotenie áut</strong><span>čo ma najviac baví</span></div>
-            <div><strong>Prirodzené svetlo</strong><span>autentické momenty</span></div>
-            <div><strong>Na dohodu</strong><span>termín aj podmienky</span></div>
-          </div>
-        </div>
+      <figure class="hero__media">
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=80"
+             alt="Športový automobil v prirodzenom svetle"
+             onerror="this.onerror=null;this.src='https://picsum.photos/seed/auto-hero/2000/1200';">
+      </figure>
+      <div class="hero__scrim" aria-hidden="true"></div>
 
-        <div class="hero__visual reveal">
-          <div class="frame">
-            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80"
-                 alt="Športový automobil v prirodzenom svetle"
-                 onerror="this.onerror=null;this.src='https://picsum.photos/seed/auto-hero/1200/900';">
-            <span class="corner corner--tl"></span>
-            <span class="corner corner--tr"></span>
-            <span class="corner corner--bl"></span>
-            <span class="corner corner--br"></span>
-            <p class="frame__hud">REC · 4K · 35MM</p>
-          </div>
-          <div class="orb" aria-hidden="true"></div>
+      <div class="hero__inner">
+        <p class="kicker kicker--light">Automobilová &amp; motorsportová fotografia — Poprad</p>
+        <h1 class="hero__title">Svetlo, kov<br>a&nbsp;rýchlosť.</h1>
+        <p class="hero__lead">
+          Fotím autá a motorsport v prirodzenom svetle — exteriér, interiér, detaily
+          aj dianie na trati. Z Popradu, po celom Slovensku.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--solid" href="#prace">Zobraziť portfólio</a>
+          <a class="btn btn--line" href="#kontakt">Rezervovať fotenie</a>
         </div>
       </div>
-      <div class="scroll-hint" aria-hidden="true"><span></span></div>
+
+      <a class="hero__scroll" href="#intro" aria-label="Posunúť dolu"><span></span></a>
+    </section>
+
+    <!-- ============ INTRO ============ -->
+    <section class="intro" id="intro">
+      <div class="wrap intro__grid">
+        <p class="kicker">Kto fotí</p>
+        <div>
+          <h2 class="display">Cizmar Photography</h2>
+          <p class="intro__lead">
+            Autá a motoršport ma bavia odmalička. Fotenie je pre mňa spôsob, ako zachytiť ich krásu —
+            bez pózovania a umelých efektov.
+          </p>
+          <p class="muted">
+            Som z Popradu a fotím po celom Slovensku — statické autá na miestach, kde vyniknú,
+            aj rýchlosť a dianie na trati. Staviam na prirodzenom svetle, čistých líniách a detailoch.
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- ============ TICKER ============ -->
@@ -86,12 +94,14 @@
         <div class="marquee__group">
           <span>Exteriér</span><span>·</span><span>Interiér</span><span>·</span>
           <span>Detaily</span><span>·</span><span>Nočná</span><span>·</span>
-          <span>Prirodzené svetlo</span><span>·</span><span>Slovensko</span><span>·</span>
+          <span>Motorsport</span><span>·</span><span>Prirodzené svetlo</span><span>·</span>
+          <span>Poprad</span><span>·</span><span>Slovensko</span><span>·</span>
         </div>
         <div class="marquee__group">
           <span>Exteriér</span><span>·</span><span>Interiér</span><span>·</span>
           <span>Detaily</span><span>·</span><span>Nočná</span><span>·</span>
-          <span>Prirodzené svetlo</span><span>·</span><span>Slovensko</span><span>·</span>
+          <span>Motorsport</span><span>·</span><span>Prirodzené svetlo</span><span>·</span>
+          <span>Poprad</span><span>·</span><span>Slovensko</span><span>·</span>
         </div>
       </div>
     </div>
@@ -99,43 +109,83 @@
     <!-- ============ PORTFOLIO ============ -->
     <section class="section" id="prace">
       <div class="wrap">
-        <header class="head reveal">
-          <p class="tag"><i></i> Vybrané práce</p>
-          <h2 class="h2">Portfólio<span class="dot">.</span></h2>
+        <header class="sec-head">
+          <div>
+            <p class="kicker">Portfólio</p>
+            <h2 class="display">Vybrané práce</h2>
+          </div>
+          <div class="filters" role="tablist" aria-label="Filtrovať portfólio">
+            <button class="filter is-active" type="button" data-filter="all" role="tab" aria-selected="true">Všetko</button>
+            <button class="filter" type="button" data-filter="exterior" role="tab" aria-selected="false">Exteriér</button>
+            <button class="filter" type="button" data-filter="interior" role="tab" aria-selected="false">Interiér</button>
+            <button class="filter" type="button" data-filter="detaily" role="tab" aria-selected="false">Detaily</button>
+            <button class="filter" type="button" data-filter="nocna" role="tab" aria-selected="false">Nočná</button>
+            <button class="filter" type="button" data-filter="motorsport" role="tab" aria-selected="false">Motorsport</button>
+          </div>
         </header>
 
-        <div class="filters reveal" role="tablist" aria-label="Filtrovať portfólio">
-          <button class="filter is-active" type="button" data-filter="all" role="tab" aria-selected="true">Všetko</button>
-          <button class="filter" type="button" data-filter="exterior" role="tab" aria-selected="false">Exteriér</button>
-          <button class="filter" type="button" data-filter="interior" role="tab" aria-selected="false">Interiér</button>
-          <button class="filter" type="button" data-filter="detail" role="tab" aria-selected="false">Detaily</button>
-          <button class="filter" type="button" data-filter="night" role="tab" aria-selected="false">Nočná</button>
-        </div>
-
         <div class="grid">
-          <figure class="card reveal" data-category="exterior">
-            <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1400&q=80" alt="Muscle car na ceste" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/auto3/1400/900';">
-            <figcaption><span>Exteriér</span><strong>Muscle car</strong></figcaption>
+          <figure class="card card--wide" data-category="exterior">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80"
+                 alt="Športový automobil v prirodzenom svetle" loading="lazy"
+                 onerror="this.onerror=null;this.src='https://picsum.photos/seed/auto-hero/1600/900';">
+            <figcaption><span>Exteriér</span><strong>Cesta pri západe</strong></figcaption>
           </figure>
-          <figure class="card reveal" data-category="interior">
-            <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=900&q=80" alt="Interiér automobilu" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/auto2/900/1100';">
+
+          <figure class="card card--tall" data-category="interior">
+            <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=900&q=80"
+                 alt="Interiér automobilu" loading="lazy"
+                 onerror="this.onerror=null;this.src='https://picsum.photos/seed/auto2/900/1200';">
             <figcaption><span>Interiér</span><strong>Palubná doska</strong></figcaption>
           </figure>
-          <figure class="card reveal" data-category="night">
-            <img src="https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=900&q=80" alt="Auto v noci" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/auto5/900/1100';">
-            <figcaption><span>Nočná</span><strong>Mesto po zotmení</strong></figcaption>
+
+          <figure class="card" data-category="nocna">
+            <img src="https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=1000&q=80"
+                 alt="Auto v noci" loading="lazy"
+                 onerror="this.onerror=null;this.src='https://picsum.photos/seed/auto5/1000/1000';">
+            <figcaption><span>Nočná</span><strong>Mesto v noci</strong></figcaption>
           </figure>
-          <figure class="card reveal" data-category="detail">
-            <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=900&q=80" alt="Predná maska automobilu" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/auto7/900/700';">
-            <figcaption><span>Detaily</span><strong>Predná maska</strong></figcaption>
+
+          <figure class="card" data-category="detaily">
+            <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1000&q=80"
+                 alt="Detail prednej masky" loading="lazy"
+                 onerror="this.onerror=null;this.src='https://picsum.photos/seed/auto3/1000/1000';">
+            <figcaption><span>Detaily</span><strong>Maska a svetlá</strong></figcaption>
           </figure>
-          <figure class="card reveal" data-category="interior">
-            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=900&q=80" alt="Auto v hale" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/auto9/900/700';">
-            <figcaption><span>Interiér</span><strong>V hale</strong></figcaption>
+
+          <figure class="card" data-category="interior">
+            <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1000&q=80"
+                 alt="Interiér automobilu" loading="lazy"
+                 onerror="this.onerror=null;this.src='https://picsum.photos/seed/auto2b/1000/1000';">
+            <figcaption><span>Interiér</span><strong>Detail palubovky</strong></figcaption>
           </figure>
-          <figure class="card reveal" data-category="night">
-            <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=900&q=80" alt="Auto v noci" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/auto14/900/700';">
-            <figcaption><span>Nočná</span><strong>Neóny</strong></figcaption>
+
+          <figure class="card card--wide" data-category="nocna">
+            <img src="https://images.unsplash.com/photo-1494905998402-395d579af36f?auto=format&fit=crop&w=1600&q=80"
+                 alt="Auto v noci na ceste" loading="lazy"
+                 onerror="this.onerror=null;this.src='https://picsum.photos/seed/auto-night-2/1600/900';">
+            <figcaption><span>Nočná</span><strong>Svetlá v tme</strong></figcaption>
+          </figure>
+
+          <figure class="card" data-category="detaily">
+            <img src="https://images.unsplash.com/photo-1449965408869-eaa3f731066a?auto=format&fit=crop&w=1000&q=80"
+                 alt="Detail kolesa a bŕzd" loading="lazy"
+                 onerror="this.onerror=null;this.src='https://picsum.photos/seed/auto4/1000/1000';">
+            <figcaption><span>Detaily</span><strong>Koleso a brzdy</strong></figcaption>
+          </figure>
+
+          <figure class="card card--tall" data-category="exterior">
+            <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=80"
+                 alt="Auto z bočného pohľadu" loading="lazy"
+                 onerror="this.onerror=null;this.src='https://picsum.photos/seed/auto-side/900/1200';">
+            <figcaption><span>Exteriér</span><strong>Bočná línia</strong></figcaption>
+          </figure>
+
+          <figure class="card card--wide" data-category="motorsport">
+            <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1600&q=80"
+                 alt="Motorsport — pretekárske auto na trati" loading="lazy"
+                 onerror="this.onerror=null;this.src='https://picsum.photos/seed/motorsport/1600/900';">
+            <figcaption><span>Motorsport</span><strong>Na trati</strong></figcaption>
           </figure>
         </div>
       </div>
@@ -144,9 +194,11 @@
     <!-- ============ SLUŽBY ============ -->
     <section class="section section--alt" id="sluzby">
       <div class="wrap">
-        <header class="head reveal">
-          <p class="tag"><i></i> Služby</p>
-          <h2 class="h2">Čo pre teba nafotím</h2>
+        <header class="sec-head">
+          <div>
+            <p class="kicker">Služby</p>
+            <h2 class="display">Čo pre teba nafotím</h2>
+          </div>
         </header>
 
         <div class="service reveal">
@@ -158,6 +210,20 @@
               <li>výber miesta podľa svetla a prostredia</li>
               <li>exteriér, interiér a detaily</li>
               <li>upravené fotky v plnom rozlíšení</li>
+            </ul>
+          </div>
+          <div class="service__price">Na dohodu</div>
+        </div>
+
+        <div class="service reveal">
+          <div class="service__num">02</div>
+          <div class="service__body">
+            <h3>Motorsport</h3>
+            <p>Fotenie na trati a pri podujatiach — rýchlosť, dianie a atmosféra pretekov.</p>
+            <ul>
+              <li>zachmatenie akcie a pohybu</li>
+              <li>autá, jazdci a atmosféra trate</li>
+              <li>výber a úprava záberov</li>
             </ul>
           </div>
           <div class="service__price">Na dohodu</div>
@@ -196,42 +262,225 @@
     <!-- ============ O MNE ============ -->
     <section class="section" id="o-mne">
       <div class="wrap">
-        <div class="split reveal">
-          <div class="split__media">
-            <img src="https://images.unsplash.com/photo-1483370483197-6d5a4a8f4d2c?auto=format&fit=crop&w=1000&q=80" alt="Fotograf s fotoaparátom pri aute" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/about/1000/1250';">
-            <span class="corner corner--tl"></span>
-            <span class="corner corner--br"></span>
-          </div>
-          <div class="split__text">
-            <p class="tag"><i></i> Kto som</p>
-            <h2 class="h2">Začínam. A fotím naplno.</h2>
-            <p>Autá ma bavia odmalička. Fotenie je pre mňa spôsob, ako tú krásu zachytiť a podeliť sa o ňu — bez pózovania a bez umelých efektov.</p>
-            <p>Začal som v prirodzenom svetle — tam, kde autá vyzerajú najlepšie. Postupne som pridal vlastné fotenia na dohodu.</p>
-            <p>Fotím línie, detaily a momenty. Ak chceš poctivé zábery svojho auta, ozvi sa.</p>
+        <div class="about reveal">
+          <figure class="about__media">
+            <img src="https://images.unsplash.com/photo-1483370483197-6d5a4a8f4d2c?auto=format&fit=crop&w=1100&q=80"
+                 alt="Fotograf s fotoaparátom pri aute" loading="lazy"
+                 onerror="this.onerror=null;this.src='https://picsum.photos/seed/about/1000/1250';">
+          </figure>
+          <div class="about__text">
+            <p class="kicker">Kto som</p>
+            <h2 class="display">Začínam. A&nbsp;fotím naplno.</h2>
+            <p class="muted">
+              Autá a motoršport ma bavia odmalička. Fotenie je pre mňa spôsob, ako ich krásu zachytiť
+              a podeliť sa o ňu — bez pózovania a bez umelých efektov.
+            </p>
+            <p class="muted">
+              Som z Popradu. Fotím statické autá na miestach, kde vyniknú, aj rýchlosť a dianie na trati.
+              Ak chceš poctivé zábery svojho auta alebo motorsportu, ozvi sa.
+            </p>
+            <a class="link-arrow" href="#kontakt">Napíš mi <span>→</span></a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ KONTAKT ============ -->
-    <section class="section section--alt" id="kontakt">
+    <!-- ============ KÓD / SCRIPTY ============ -->
+    <section class="section section--alt code" id="kod">
       <div class="wrap">
-        <header class="head reveal">
-          <p class="tag"><i></i> Rezervácia</p>
-          <h2 class="h2">Nafotíme <em>tvoje auto</em>.</h2>
-          <p class="lead lead--center">Vyplň krátky formulár — ozvem sa ti čo najskôr. Alebo mi napíš rovno na e-mail.</p>
+        <header class="sec-head reveal">
+          <div>
+            <p class="kicker">Pod kapotou</p>
+            <h2 class="display">Kód a&nbsp;scripty</h2>
+          </div>
+          <p class="code__intro muted">
+            Okrem fotenia ma baví aj programovanie. Táto stránka beží na
+            <b>JavaScript</b>e, <b>React</b>e a <b>PHP</b> — nižšie nájdeš ukážky
+            v rôznych jazykoch aj živé demo.
+          </p>
         </header>
 
-        <div class="contact reveal">
-          <div class="contact__info">
-            <div class="info"><span>E-mail</span><a href="mailto:cizsamko@gmail.com">cizsamko@gmail.com</a></div>
-            <div class="info"><span>Telefón</span><a href="tel:+421910186170">+421 910 186 170</a></div>
-            <div class="info"><span>Kde fotím</span><b>Slovensko — na dohodu</b></div>
-            <div class="info"><span>Instagram</span><a href="https://www.instagram.com/" target="_blank" rel="noopener">@cizmar.photo</a></div>
+        <div class="code__box reveal">
+          <div class="code__tabs" role="tablist" aria-label="Ukážky kódu">
+            <button class="code__tab is-active" type="button" role="tab" aria-selected="true" data-lang="js">JavaScript</button>
+            <button class="code__tab" type="button" role="tab" aria-selected="false" data-lang="jsx">React / JSX</button>
+            <button class="code__tab" type="button" role="tab" aria-selected="false" data-lang="php">PHP</button>
+            <button class="code__tab" type="button" role="tab" aria-selected="false" data-lang="python">Python</button>
+            <button class="code__tab" type="button" role="tab" aria-selected="false" data-lang="sql">SQL</button>
+            <button class="code__tab" type="button" role="tab" aria-selected="false" data-lang="bash">Bash</button>
           </div>
 
+          <div class="code__panels">
+            <pre class="code__panel is-active" data-lang="js"><code class="language-javascript">// Filter portfólia + načítanie galérie z API
+const filtre = document.querySelectorAll('.filter');
+const karty  = document.querySelectorAll('.card');
+
+filtre.forEach((tlacidlo) =&gt; {
+  tlacidlo.addEventListener('click', () =&gt; {
+    const hodnota = tlacidlo.dataset.filter;
+    karty.forEach((karta) =&gt; {
+      const zobraz = hodnota === 'all'
+        || karta.dataset.category === hodnota;
+      karta.classList.toggle('is-hidden', !zobraz);
+    });
+  });
+});
+
+// Asynchrónne načítanie fotiek z API
+async function nacitajGaleriu(url) {
+  const odpoved = await fetch(url);
+  if (!odpoved.ok) throw new Error(`Chyba: ${odpoved.status}`);
+  return odpoved.json();
+}
+</code></pre>
+
+            <pre class="code__panel" data-lang="jsx"><code class="language-jsx">import { useState } from "react";
+
+const FILTRE = [
+  { id: "tepla", label: "Teplá", css: "sepia(.18) saturate(1.1)" },
+  { id: "cb",    label: "ČB",    css: "grayscale(1) contrast(1.1)" },
+];
+
+export default function FotkaSFiltrom({ src }) {
+  const [aktivny, setAktivny] = useState(FILTRE[0]);
+
+  return (
+    &lt;figure className="foto"&gt;
+      &lt;img src={src} alt="Auto" style={{ filter: aktivny.css }} /&gt;
+      &lt;figcaption&gt;
+        {FILTRE.map((f) =&gt; (
+          &lt;button key={f.id} onClick={() =&gt; setAktivny(f)}&gt;
+            {f.label}
+          &lt;/button&gt;
+        ))}
+      &lt;/figcaption&gt;
+    &lt;/figure&gt;
+  );
+}
+</code></pre>
+
+            <pre class="code__panel" data-lang="php"><code class="language-php">&lt;?php
+declare(strict_types=1);
+
+// Jednoduchý spracovateľ rezervačného formulára
+$meno  = trim($_POST['name']  ?? '');
+$email = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
+$auto  = trim($_POST['car']   ?? '');
+
+if ($meno === '' || $email === false) {
+    http_response_code(422);
+    exit(json_encode(['ok' =&gt; false, 'chyba' =&gt; 'Chýbajú povinné polia']));
+}
+
+$komu    = 'cizsamko@gmail.com';
+$predmet = 'Nová rezervácia fotenia';
+$sprava  = "Meno: {$meno}\nE-mail: {$email}\nAuto: {$auto}";
+
+mail($komu, $predmet, $sprava, 'From: web@cizmar-photography.sk');
+
+echo json_encode(['ok' =&gt; true]);
+</code></pre>
+
+            <pre class="code__panel" data-lang="python"><code class="language-python">from pathlib import Path
+
+# Hromadné premenovanie fotiek z fotenia
+PRIECINOK = Path("fotky")
+
+for foto in sorted(PRIECINOK.glob("*.jpg")):
+    cislo = int(foto.stem.split("_")[-1])
+    novy_nazov = PRIECINOK / f"poprad_{cislo:04d}.jpg"
+    foto.rename(novy_nazov)
+    print(f"{foto.name} -&gt; {novy_nazov.name}")
+</code></pre>
+
+            <pre class="code__panel" data-lang="sql"><code class="language-sql">CREATE TABLE zakaznici (
+  id      SERIAL PRIMARY KEY,
+  meno    VARCHAR(120) NOT NULL,
+  email   VARCHAR(160) NOT NULL UNIQUE,
+  mesto   VARCHAR(80),
+  created TIMESTAMP DEFAULT now()
+);
+
+CREATE TABLE rezervacie (
+  id          SERIAL PRIMARY KEY,
+  zakaznik_id INTEGER REFERENCES zakaznici(id) ON DELETE CASCADE,
+  sluzba      VARCHAR(60) NOT NULL,
+  datum       DATE,
+  cas         TIME,
+  stav        VARCHAR(20) DEFAULT 'nova'
+);
+
+SELECT z.meno, r.sluzba, r.datum
+FROM rezervacie r
+JOIN zakaznici z ON z.id = r.zakaznik_id
+WHERE r.stav = 'nova'
+ORDER BY r.datum;
+</code></pre>
+
+            <pre class="code__panel" data-lang="bash"><code class="language-bash">#!/usr/bin/env bash
+set -euo pipefail
+
+# Záloha fotiek a nasadenie webu na server
+ZDROJ="./build"
+CIEL="user@server:/var/www/cizmar"
+
+echo "-&gt; Kopírujem súbory…"
+rsync -avz --delete "$ZDROJ/" "$CIEL/"
+
+echo "-&gt; Hotovo. Web je nasadený."
+</code></pre>
+          </div>
+        </div>
+
+        <div class="demos reveal">
+          <div class="demo">
+            <p class="kicker">React · živé demo</p>
+            <div id="reactDemo" class="demo__mount"></div>
+            <p class="demo__note muted">Interaktívny komponent v Reacte (useState) — prepni farebný filter.</p>
+          </div>
+
+          <div class="demo">
+            <p class="kicker">Vanilla JS · živé demo</p>
+            <div class="tw">
+              <span class="tw__prefix">Fotím&nbsp;</span><span class="tw__word" id="typewriter" data-words="autá|motorsport|detaily|prirodzené svetlo"></span><span class="tw__caret" aria-hidden="true"></span>
+            </div>
+            <p class="demo__note muted">Typový efekt napísaný v čistom JavaScripte (requestAnimationFrame).</p>
+          </div>
+        </div>
+
+        <div class="code__files reveal">
+          <p class="code__files-title kicker">Skripty na stiahnutie</p>
+          <ul class="code__files-list">
+            <li><a href="assets/scripts/gallery.js" download><b>gallery.js</b><span>JavaScript — filter a lightbox</span></a></li>
+            <li><a href="assets/scripts/booking.php" download><b>booking.php</b><span>PHP — rezervácia e-mailom</span></a></li>
+            <li><a href="assets/scripts/rename.py" download><b>rename.py</b><span>Python — premenovanie fotiek</span></a></li>
+            <li><a href="assets/scripts/schema.sql" download><b>schema.sql</b><span>SQL — databáza rezervácií</span></a></li>
+            <li><a href="assets/scripts/deploy.sh" download><b>deploy.sh</b><span>Bash — nasadenie webu</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ KONTAKT ============ -->
+    <section class="contact" id="kontakt">
+      <div class="wrap contact__grid">
+        <div class="contact__intro">
+          <p class="kicker kicker--light">Rezervácia</p>
+          <h2 class="display display--light">Nafotíme<br>tvoje auto.</h2>
+          <p class="contact__lead">
+            Vyplň formulár alebo mi rovno napíš — ozvem sa čo najskôr a dohodneme detaily.
+          </p>
+          <ul class="contact__list">
+            <li><span>E-mail</span><a href="mailto:cizsamko@gmail.com">cizsamko@gmail.com</a></li>
+            <li><span>Telefón</span><a href="tel:+421910186170">+421 910 186 170</a></li>
+            <li><span>Kde fotím</span><b>Poprad a okolie — na dohodu</b></li>
+            <li><span>Instagram</span><a href="https://www.instagram.com/" target="_blank" rel="noopener">@cizmar.photo</a></li>
+          </ul>
+        </div>
+
+        <div class="contact__form">
           <div class="reserve-box">
-            <p class="tag"><i></i> Rezervačný formulár</p>
+            <p class="kicker">Rezervačný formulár</p>
             <form class="vform" id="bookingForm"
                   action="https://formsubmit.co/cizsamko@gmail.com"
                   method="POST" novalidate>
@@ -304,6 +553,7 @@
                   <select id="bk-package" name="package">
                     <option value="">— vyber —</option>
                     <option value="Fotenie auta">Fotenie auta</option>
+                    <option value="Motorsport">Motorsport</option>
                   </select>
                 </div>
               </div>
@@ -323,7 +573,7 @@
               </div>
 
               <div class="vform__submit">
-                <button class="btn btn--neon" id="submitBtn" type="submit">Odoslať rezerváciu</button>
+                <button class="btn btn--solid" id="submitBtn" type="submit">Odoslať rezerváciu</button>
               </div>
               <p class="vform__hint" id="formHint" hidden>Doplň povinné polia označené <span aria-hidden="true">*</span> a tlačidlo sa odomkne.</p>
               <p class="vform__note" id="formNote" role="status" aria-live="polite"></p>
@@ -333,29 +583,29 @@
       </div>
     </section>
 
-    <!-- ============ CTA BAND ============ -->
-    <section class="cta-band">
-      <div class="wrap cta-band__inner reveal">
-        <div>
-          <p class="tag"><i></i> Pripravený?</p>
-          <h2 class="h2">Daj svojmu autu <em>záber</em>, ktorý si zapamätajú.</h2>
-        </div>
-        <a class="btn btn--neon" href="#kontakt">Rezervovať fotenie</a>
-      </div>
-    </section>
-
   </main>
 
   <!-- ============ FOOTER ============ -->
   <footer class="footer">
     <div class="wrap footer__inner">
-      <div class="footer__mark">CIZMAR<em>.</em></div>
-      <p class="footer__txt">Automobilová fotografia — prirodzene, bez klišé. Fotím na Slovensku.</p>
+      <a class="brand brand--footer" href="#home" aria-label="Cizmar Photography — domov">
+        <span class="brand__mark">CIZMAR</span>
+        <span class="brand__sub">Automotive Photography</span>
+      </a>
+
+      <nav class="footer__nav" aria-label="Pätička">
+        <a href="#prace">Práce</a>
+        <a href="#sluzby">Služby</a>
+        <a href="#o-mne">O mne</a>
+        <a href="#kod">Kód</a>
+        <a href="https://samustang1.github.io/cizmar-portfolio/" target="_blank" rel="noopener">Portfólio ↗</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+
       <div class="footer__meta">
         <span>© <span id="year">2026</span> Cizmar Photography</span>
         <span><a href="mailto:cizsamko@gmail.com">cizsamko@gmail.com</a></span>
         <span><a href="tel:+421910186170">+421 910 186 170</a></span>
-        <span><a href="https://samustang1.github.io/cizmar-portfolio/" target="_blank" rel="noopener">Osobné portfólio ↗</a></span>
       </div>
     </div>
   </footer>
@@ -374,7 +624,14 @@
   <!-- ============ NAHOR ============ -->
   <button class="to-top" id="toTop" type="button" aria-label="Nahor">↑</button>
 
-  <script src="assets/js/v3.js?v=4" defer></script>
-  <script src="assets/js/v3-form.js?v=1" defer></script>
+  <!-- Knižnice (kód / syntax highlighting / React) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" defer></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" defer></script>
+
+  <!-- Vlastné skripty -->
+  <script src="assets/js/v3.js?v=6" defer></script>
+  <script src="assets/js/v3-react.js?v=1" defer></script>
+  <script src="assets/js/v3-form.js?v=2" defer></script>
 </body>
 </html>
