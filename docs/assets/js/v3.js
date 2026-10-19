@@ -1,8 +1,8 @@
-/* ============================================================
+﻿/* ============================================================
    Cizmar Photography — V3 · EDITORIAL
    Interakcie: sticky hlavička, mobilné menu, reveal pri scrolli,
    filtre portfólia, lightbox, tlačidlo nahor, progress,
-   aktívna navigácia, taby s kódom a typový efekt.
+   aktívna navigácia, taby s kódom.
    ============================================================ */
 (function () {
   'use strict';
@@ -168,6 +168,28 @@
     toTop.addEventListener('click', function () {
       window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
     });
+  }
+
+  /* ===================== TABY S KÓDOM ===================== */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.code__tab'));
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.code__panel'));
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var lang = tab.getAttribute('data-lang');
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      panels.forEach(function (p) {
+        p.classList.toggle('is-active', p.getAttribute('data-lang') === lang);
+      });
+    });
+  });
+
+  /* ===================== SYNTAX HIGHLIGHTING ===================== */
+  if (window.hljs && typeof window.hljs.highlightAll === 'function') {
+    try { window.hljs.highlightAll(); } catch (e) { /* ticho zlyhá */ }
   }
 
 })();

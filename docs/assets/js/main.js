@@ -1,4 +1,4 @@
-/* =====================================================================
+﻿/* =====================================================================
    Cizmar Photography  ·  v2 "Editorial"
    Vanilla JS: menu, reveal, filtre, lightbox, formulár (odoslanie e-mailu).
    Formulár odosiela cez FormSubmit — príjemca dostane e-mail v schránke,
@@ -326,3 +326,4 @@
     initYear();
   });
 })();
+

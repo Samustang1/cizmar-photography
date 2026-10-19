@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    Cizmar Photography — V3 · rezervačný formulár
    Rovnaká logika ako na starom webe (FormSubmit AJAX),
    ale napojená na tmavý v3 formulár (#bookingForm).
@@ -158,3 +158,4 @@
     initForm();
   }
 })();
+
