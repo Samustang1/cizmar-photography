@@ -129,7 +129,7 @@ ul { list-style: none; }
 .hero__media img { width: 100%; height: 100%; object-fit: cover; }
 .hero__scrim {
   position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(180deg, rgba(0, 0, 0, .55) 0%, rgba(0, 0, 0, .12) 42%, rgba(0, 0, 0, .78) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, .45) 0%, rgba(0, 0, 0, .08) 40%, rgba(0, 0, 0, .6) 100%);
 }
 .hero__inner { position: relative; z-index: 2; width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 8rem 1.6rem 5rem; }
 .hero__title {
@@ -316,52 +316,6 @@ ul { list-style: none; }
   .hero__scroll span { animation: none; }
 }
 
-/* ============ KÓD / SCRIPTY ============ */
-.code__intro { max-width: 48ch; font-size: .95rem; }
-.code__intro b { color: var(--ink); font-weight: 600; }
-
-.code__box { border-radius: 8px; overflow: hidden; background: #101014; border: 1px solid rgba(17, 17, 17, .12); }
-.code__tabs { display: flex; flex-wrap: wrap; background: #0b0b0e; border-bottom: 1px solid rgba(255, 255, 255, .1); }
-.code__tab {
-  font-family: var(--font-display); font-size: .7rem; font-weight: 600;
-  letter-spacing: .12em; text-transform: uppercase;
-  padding: .85rem 1.15rem; background: transparent; border: 0;
-  border-bottom: 2px solid transparent; color: rgba(255, 255, 255, .5);
-  cursor: pointer; transition: color .2s, background .2s, border-color .2s;
-}
-.code__tab:hover { color: #fff; }
-.code__tab.is-active { color: #fff; border-bottom-color: var(--accent); background: rgba(255, 255, 255, .05); }
-
-.code__panel { display: none; margin: 0; padding: 1.5rem 1.6rem; overflow-x: auto; }
-.code__panel.is-active { display: block; }
-.code__panel code {
-  font-family: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: .84rem; line-height: 1.75; color: #e6e6e8; white-space: pre;
-}
-
-/* highlight.js — vlastná tmavá téma */
-.code__panel .hljs-comment, .code__panel .hljs-quote { color: #6b7280; font-style: italic; }
-.code__panel .hljs-keyword, .code__panel .hljs-selector-tag, .code__panel .hljs-literal,
-.code__panel .hljs-section, .code__panel .hljs-doctag, .code__panel .hljs-type,
-.code__panel .hljs-name { color: #ff7b72; }
-.code__panel .hljs-string, .code__panel .hljs-regexp, .code__panel .hljs-addition,
-.code__panel .hljs-attribute { color: #a5d6a7; }
-.code__panel .hljs-number, .code__panel .hljs-symbol, .code__panel .hljs-bullet { color: #f5c56b; }
-.code__panel .hljs-title, .code__panel .hljs-title.function_, .code__panel .hljs-title.class_ { color: #79c0ff; }
-.code__panel .hljs-attr, .code__panel .hljs-variable, .code__panel .hljs-template-variable,
-.code__panel .hljs-built_in, .code__panel .hljs-params { color: #d2a8ff; }
-.code__panel .hljs-meta, .code__panel .hljs-tag { color: #8b949e; }
-.code__panel .hljs-operator, .code__panel .hljs-punctuation { color: #c9d1d9; }
-
-/* ============ SÚBORY NA STIAHNUTIE ============ */
-.code__files { margin-top: 2.6rem; border-top: 1px solid var(--line); padding-top: 1.6rem; }
-.code__files-title { display: block; margin-bottom: 1.1rem; }
-.code__files-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: .7rem; }
-.code__files-list a { display: block; padding: .95rem 1.05rem; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); transition: border-color .2s, transform .2s; }
-.code__files-list a:hover { border-color: var(--line-2); transform: translateY(-2px); }
-.code__files-list b { display: block; font-family: var(--font-display); font-size: .92rem; color: var(--ink); margin-bottom: .25rem; }
-.code__files-list span { font-size: .8rem; color: var(--muted); }
-
 /* ============ RESPONSIVE ============ */
 @media (max-width: 1000px) {
   .intro__grid { grid-template-columns: 1fr; gap: 1.4rem; }
@@ -369,7 +323,6 @@ ul { list-style: none; }
   .contact__grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .steps { grid-template-columns: repeat(2, 1fr); }
   .grid { column-count: 2; }
-  .code__files-list { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 860px) {
@@ -402,8 +355,4 @@ ul { list-style: none; }
   .contact__list li { grid-template-columns: 1fr; gap: .2rem; }
   .reserve-box { padding: 1.4rem; }
   .hero__inner { padding-bottom: 5rem; }
-  .code__files-list { grid-template-columns: 1fr; }
-  .code__panel { padding: 1.2rem; }
-  .code__panel code { font-size: .78rem; }
-  .code__tab { padding: .7rem .8rem; font-size: .64rem; }
 }

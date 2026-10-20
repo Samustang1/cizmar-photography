@@ -31,7 +31,6 @@
         <a href="#prace">Práce</a>
         <a href="#sluzby">Služby</a>
         <a href="#o-mne">O mne</a>
-        <a href="#kod">Kód</a>
         <a href="#kontakt">Kontakt</a>
         <a class="nav__cta" href="#kontakt">Rezervovať</a>
       </nav>
@@ -284,123 +283,6 @@
       </div>
     </section>
 
-    <!-- ============ KÓD / SQL ============ -->
-    <section class="section section--alt code" id="kod">
-      <div class="wrap">
-        <header class="sec-head reveal">
-          <div>
-            <p class="kicker">Pod kapotou</p>
-            <h2 class="display">Kód a databáza</h2>
-          </div>
-          <p class="code__intro muted">
-            Okrem fotenia ma baví aj programovanie. Tu nájdeš ukážky SQL schémy
-            pre rezervácie a jednoduchý PHP handler.
-          </p>
-        </header>
-
-        <div class="code__box reveal">
-          <div class="code__tabs" role="tablist" aria-label="Ukážky kódu">
-            <button class="code__tab is-active" type="button" role="tab" aria-selected="true" data-lang="sql">SQL</button>
-            <button class="code__tab" type="button" role="tab" aria-selected="false" data-lang="php">PHP</button>
-          </div>
-
-          <div class="code__panels">
-            <pre class="code__panel is-active" data-lang="sql"><code class="language-sql">-- Schéma databázy pre rezervácie
--- Cizmar Photography · ukážkový skript (PostgreSQL)
-
-CREATE TABLE zakaznici (
-  id      SERIAL PRIMARY KEY,
-  meno    VARCHAR(120) NOT NULL,
-  email   VARCHAR(160) NOT NULL UNIQUE,
-  telefon VARCHAR(30),
-  mesto   VARCHAR(80),
-  created TIMESTAMP NOT NULL DEFAULT now()
-);
-
-CREATE TABLE rezervacie (
-  id          SERIAL PRIMARY KEY,
-  zakaznik_id INTEGER NOT NULL REFERENCES zakaznici(id) ON DELETE CASCADE,
-  sluzba      VARCHAR(60) NOT NULL,
-  datum       DATE,
-  cas         TIME,
-  lokalita    VARCHAR(120),
-  stav        VARCHAR(20) NOT NULL DEFAULT 'nova',
-  created     TIMESTAMP NOT NULL DEFAULT now()
-);
-
-CREATE INDEX idx_rezervacie_stav ON rezervacie (stav);
-CREATE INDEX idx_rezervacie_datum ON rezervacie (datum);
-
--- Nové rezervácie zoradené podľa dátumu
-SELECT z.meno, z.email, r.sluzba, r.datum, r.cas, r.stav
-FROM rezervacie r
-JOIN zakaznici z ON z.id = r.zakaznik_id
-WHERE r.stav = 'nova'
-ORDER BY r.datum NULLS LAST, r.cas NULLS LAST;</code></pre>
-
-            <pre class="code__panel" data-lang="php"><code class="language-php"><?php
-/**
- * booking.php — spracovanie rezervačného formulára
- * Cizmar Photography · ukážkový skript (vyžaduje PHP hosting)
- */
-declare(strict_types=1);
-
-header('Content-Type: application/json; charset=utf-8');
-
-if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
-    http_response_code(405);
-    exit(json_encode(['ok' => false, 'chyba' => 'Povolená je len metóda POST']));
-}
-
-$meno    = trim((string) ($_POST['name'] ?? ''));
-$email   = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
-$telefon = preg_replace('/\D+/', '', (string) ($_POST['phone'] ?? ''));
-$predvolba = (string) ($_POST['phoneCode'] ?? '');
-$auto    = trim((string) ($_POST['car'] ?? ''));
-$datum   = (string) ($_POST['date'] ?? '');
-$cas     = (string) ($_POST['time'] ?? '');
-$miesto  = trim((string) ($_POST['location'] ?? ''));
-$sluzba  = (string) ($_POST['package'] ?? '');
-$sprava  = trim((string) ($_POST['message'] ?? ''));
-$gdpr    = (string) ($_POST['gdpr'] ?? '');
-
-if ($meno === '' || $email === false || $sprava === '' || $gdpr === '') {
-    http_response_code(422);
-    exit(json_encode(['ok' => false, 'chyba' => 'Chýbajú povinné polia']));
-}
-
-$komu    = 'cizsamko@gmail.com';
-$predmet = 'Nová rezervácia fotenia — Cizmar Photography';
-
-$telo = "Meno: {$meno}\n"
-      . "E-mail: {$email}\n"
-      . "Telefón: {$predvolba} {$telefon}\n"
-      . "Auto: {$auto}\n"
-      . "Dátum: {$datum} {$cas}\n"
-      . "Lokalita: {$miesto}\n"
-      . "Služba: {$sluzba}\n\n"
-      . "Správa:\n{$sprava}\n";
-
-$hlavicky = "From: Cizmar Photography <web@cizmar-photography.sk>\r\n"
-          . "Reply-To: {$email}\r\n"
-          . "Content-Type: text/plain; charset=utf-8\r\n";
-
-$odoslane = mail($komu, $predmet, $telo, $hlavicky);
-
-echo json_encode(['ok' => (bool) $odoslane]);</code></pre>
-          </div>
-        </div>
-
-        <div class="code__files reveal">
-          <p class="code__files-title kicker">Skripty na stiahnutie</p>
-          <ul class="code__files-list">
-            <li><a href="assets/scripts/schema.sql" download><b>schema.sql</b><span>SQL — databáza rezervácií</span></a></li>
-            <li><a href="assets/scripts/booking.php" download><b>booking.php</b><span>PHP — rezervácia e-mailom</span></a></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
     <!-- ============ KONTAKT ============ -->
     <section class="contact" id="kontakt">
       <div class="wrap contact__grid">
@@ -563,11 +445,8 @@ echo json_encode(['ok' => (bool) $odoslane]);</code></pre>
   <!-- ============ NAHOR ============ -->
   <button class="to-top" id="toTop" type="button" aria-label="Nahor">↑</button>
 
-  <!-- Syntax highlighting -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
-
   <!-- Vlastné skripty -->
-  <script src="assets/js/v3.js?v=7" defer></script>
+  <script src="assets/js/v3.js?v=8" defer></script>
   <script src="assets/js/v3-form.js?v=2" defer></script>
 </body>
 </html>
