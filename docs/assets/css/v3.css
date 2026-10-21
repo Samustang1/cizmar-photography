@@ -233,47 +233,20 @@ ul { list-style: none; }
 .contact__list a, .contact__list b { color: #fff; font-weight: 500; }
 .contact__list a:hover { color: var(--accent); }
 
-/* ============ FORMULÁR ============ */
+/* ============ REZERVÁCIA (Cal.com) ============ */
 .reserve-box { background: #fff; border-radius: 6px; padding: 2rem; color: var(--ink); }
 .reserve-box .kicker { display: block; margin-bottom: 1.2rem; }
 
-.vform { display: grid; gap: 1rem; }
-.vform__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.vfield { display: grid; gap: .4rem; }
-.vfield > label { font-family: var(--font-display); font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
-.vform input[type="text"], .vform input[type="email"], .vform input[type="tel"],
-.vform input[type="date"], .vform input[type="time"], .vform select, .vform textarea {
-  width: 100%; font: inherit; font-size: .95rem; color: var(--ink);
-  background: var(--bg); border: 1px solid var(--line); border-radius: 6px;
-  padding: .75rem .85rem; transition: border-color .2s, background .2s;
-}
-.vform textarea { min-height: 120px; resize: vertical; }
-.vform input::placeholder, .vform textarea::placeholder { color: #9a9a97; }
-.vform input[type="date"], .vform input[type="time"] { color-scheme: light; }
-.vform select {
-  appearance: none; -webkit-appearance: none; -moz-appearance: none; padding-right: 2.2rem;
-  background-image: linear-gradient(45deg, transparent 50%, var(--ink) 50%),
-                    linear-gradient(135deg, var(--ink) 50%, transparent 50%);
-  background-position: calc(100% - 18px) calc(50% - 2px), calc(100% - 13px) calc(50% - 2px);
-  background-size: 5px 5px, 5px 5px; background-repeat: no-repeat;
-}
-.vform input:focus, .vform select:focus, .vform textarea:focus { outline: none; border-color: var(--ink); background: #fff; }
-.vphone { display: grid; grid-template-columns: 7.5rem 1fr; gap: .5rem; }
-.vfield.has-error input, .vfield.has-error select, .vfield.has-error textarea { border-color: var(--accent); }
-.vfield__error { font-size: .76rem; color: var(--accent); }
-.vfield__error:empty { display: none; }
-.vcheck { display: flex; gap: .6rem; align-items: flex-start; font-size: .86rem; color: var(--muted); cursor: pointer; }
-.vcheck input { width: auto; margin-top: .2rem; accent-color: var(--accent); }
-.vform__submit { margin-top: .3rem; }
-.vform__submit .btn { width: 100%; }
-.vform__submit .btn[disabled] { opacity: .4; cursor: not-allowed; transform: none; }
-.vform__submit .btn.is-loading { opacity: .7; pointer-events: none; }
-.vform__hint { font-size: .8rem; color: var(--muted); }
-.vform__hint[hidden] { display: none; }
-.vform__note { font-size: .88rem; min-height: 1.1rem; }
-.vform__note.is-success { color: #15803d; }
-.vform__note.is-error { color: var(--accent); }
-.vform .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.cal-embed { text-align: center; }
+.cal-btn { display: inline-flex; align-items: center; gap: .6rem; width: 100%; max-width: 320px; margin-bottom: 1rem; }
+.cal-btn:hover { background: #c0271f; }
+.cal-note { font-size: .85rem; margin: 0; }
+
+.cal-alt { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+.cal-alt summary { cursor: pointer; font-family: var(--font-display); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); transition: color .2s; }
+.cal-alt summary:hover { color: var(--ink); }
+.cal-alt[open] summary { color: var(--ink); }
+.cal-alt-links { display: flex; gap: .8rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem; }
 
 /* ============ FOOTER ============ */
 .footer { background: var(--dark); border-top: 1px solid rgba(255, 255, 255, .12); padding: 3rem 0; }
