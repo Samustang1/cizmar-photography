@@ -1,37 +1,47 @@
-# Cizmar Photography — Automobilové fotoportfólio
+# Cizmar Photography
 
-Samostatné webové portfólio automobilového fotografa (statické, viacstránkové).
+Osobné fotoportfólio — automobilová a motorsportová fotografia z Popradu.
+Jednostránkový statický web s rezervačným kalendárom Cal.com.
 
 - **Live:** https://samustang1.github.io/cizmar-photography/
-- **Zdroj stránky:** priečinok [`docs/`](docs/) — sem patria všetky HTML, CSS a JS súbory
-- **Archív:** `archive/portfolio-v1/` — pôvodná jednostranová verzia (nie je súčasťou live webu)
+- **Zdroj:** priečinok `docs/` (odsiaľto sa nasadzuje cez GitHub Actions)
+- **Fotky:** dočasne ukážkové (Unsplash), pripravené na výmenu za vlastné
 
 ## Štruktúra
 
 ```
-docs/                      # nasadzovaná stránka
-├─ index.html              # Domov
-├─ portfolio.html          # Galéria s filtrami a lightboxom
-├─ o-mne.html              # O mne
-├─ sluzby.html             # Služba + časté otázky
-├─ kontakt.html            # Kontakt a rezervačný formulár
-├─ dakujeme.html           # Poďakovanie po odoslaní
-└─ assets/                 # css/style.css, js/main.js
-
-archive/portfolio-v1/      # stará verzia (archív)
-.github/workflows/         # nasadenie na GitHub Pages
+docs/
+├─ index.html            # celá stránka (hero, prístup, práce, služby, o mne, kontakt)
+└─ assets/
+   ├─ css/site.css       # štýly (tokeny v :root)
+   └─ js/
+      ├─ site.js         # menu, sticky hlavička, filtre, lightbox, reveal
+      └─ cal-embed.js    # lazy-load Cal.com inline kalendára
 ```
 
-## Nasadenie
+## Rezervácia
 
-Push do vetvy `main` spustí GitHub Actions (`.github/workflows/deploy-pages.yml`),
-ktorý nasadí priečinok `docs/` na GitHub Pages.
+Klient si vyberá termín priamo na stránke cez Cal.com:
+`https://cal.com/cizmar.photo/automobilove-fotenie`
 
-## Rezervačný formulár
+Embed sa načíta až pri priblížení ku sekcii Kontakt (IntersectionObserver).
+Ak sa kalendár nezobrazí, v karte je odkaz na otvorenie v novom okne.
 
-Formulár odosiela e-mail cez službu **FormSubmit** do schránky `cizsamko@gmail.com`.
-Návštevník neopúšťa stránku (žiadny `mailto`). Prvýkrát treba formulár jednorazovo
-**aktivovať** kliknutím na „Activate Form" v e-maile od FormSubmit.
+## Archív
 
-Zmenu príjemcu spravíš v `docs/kontakt.html` (atribút `action`, `_next`) a v
-`docs/assets/js/main.js` (konštanta `ENDPOINT`).
+- `archive/portfolio-v1/` — pôvodná viacstránková verzia
+- `archive/portfolio-v2/` — druhá verzia
+- `archive/v2/` — medziverzia
+- `archive/portfolio-v3/` — verzia pred redizajnom (október 2026)
+
+Archív nie je súčasťou nasadenej stránky.
+
+## Lokálne spustenie
+
+Statický web — stačí ho otvoriť cez lokálny server, napr.:
+
+```
+npx serve docs
+```
+
+alebo v MAMP: `http://localhost/cizmar-photography/docs/`
