@@ -226,7 +226,7 @@ ul { list-style: none; }
 
 /* ============ KONTAKT (tmavá) ============ */
 .contact { background: var(--dark); color: #fff; padding: 7rem 0; }
-.contact__grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 4rem; align-items: start; }
+.contact__grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 3rem; align-items: start; }
 .contact .kicker { margin-bottom: .9rem; }
 .contact__lead { color: rgba(255, 255, 255, .7); margin: 1.3rem 0 2.2rem; max-width: 44ch; }
 .contact__list li { display: grid; grid-template-columns: 130px 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid rgba(255, 255, 255, .14); }
@@ -235,14 +235,31 @@ ul { list-style: none; }
 .contact__list a, .contact__list b { color: #fff; font-weight: 500; }
 .contact__list a:hover { color: var(--accent); }
 
-/* ============ REZERVÁCIA (Cal.com) ============ */
-.reserve-box { background: #fff; border-radius: 6px; padding: 2rem; color: var(--ink); }
-.reserve-box .kicker { display: block; margin-bottom: 1.2rem; }
+/* ============ REZERVÁCIA (Cal.com embed) ============ */
+.reserve-box { background: #fff; border-radius: 6px; padding: 1.4rem; color: var(--ink); }
+.reserve-box .kicker { display: block; margin: .4rem 0 1.2rem; }
 
 .cal-embed { text-align: center; }
-.cal-btn { display: inline-flex; align-items: center; gap: .6rem; width: 100%; max-width: 320px; margin-bottom: 1rem; }
-.cal-btn:hover { background: #c0271f; }
-.cal-note { font-size: .85rem; margin: 0; }
+
+.cal-inline {
+  position: relative;
+  width: 100%;
+  height: clamp(620px, 74vh, 760px);
+  overflow: auto;
+  border-radius: 4px;
+  background: #fff;
+}
+.cal-inline iframe { width: 100%; height: 100%; border: 0; display: block; }
+.cal-inline__loader { position: absolute; inset: 0; display: grid; place-items: center; background: #fff; z-index: 0; }
+.cal-inline__loader span {
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 2px solid var(--line); border-top-color: var(--accent);
+  animation: calspin .8s linear infinite;
+}
+@keyframes calspin { to { transform: rotate(360deg); } }
+
+.cal-note { font-size: .82rem; margin: 1rem 0 0; }
+.cal-note a { text-decoration: underline; text-underline-offset: 2px; }
 
 /* ============ FOOTER ============ */
 .footer { background: var(--dark); border-top: 1px solid rgba(255, 255, 255, .12); padding: 3rem 0; }
