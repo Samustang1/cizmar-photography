@@ -244,12 +244,6 @@ ul { list-style: none; }
 .cal-btn:hover { background: #c0271f; }
 .cal-note { font-size: .85rem; margin: 0; }
 
-.cal-alt { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
-.cal-alt summary { cursor: pointer; font-family: var(--font-display); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); transition: color .2s; }
-.cal-alt summary:hover { color: var(--ink); }
-.cal-alt[open] summary { color: var(--ink); }
-.cal-alt-links { display: flex; gap: .8rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem; }
-
 /* ============ FOOTER ============ */
 .footer { background: var(--dark); border-top: 1px solid rgba(255, 255, 255, .12); padding: 3rem 0; }
 .footer__inner { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; justify-content: space-between; }
