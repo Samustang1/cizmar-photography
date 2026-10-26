@@ -244,11 +244,18 @@ ul { list-style: none; }
 .cal-inline {
   position: relative;
   width: 100%;
-  min-height: 620px;
-  overflow: hidden;
-  border-radius: 4px;
+  height: clamp(500px, 60vh, 640px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  border-radius: 6px;
   background: #fff;
+  scrollbar-width: thin;
+  scrollbar-color: #cfcfcb #fff;
 }
+.cal-inline::-webkit-scrollbar { width: 8px; }
+.cal-inline::-webkit-scrollbar-thumb { background: #cfcfcb; border-radius: 999px; }
+.cal-inline::-webkit-scrollbar-track { background: #fff; }
 .cal-inline iframe { width: 100%; border: 0; display: block; }
 .cal-inline__loader { position: absolute; inset: 0; display: grid; place-items: center; background: #fff; z-index: 0; }
 .cal-inline__loader span {

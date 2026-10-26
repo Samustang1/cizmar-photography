@@ -74,7 +74,7 @@
   }
 
   /* ===================== AKTÍVNA NAVIGÁCIA ===================== */
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav a[href^="#"]'));
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav a[href^="#"]:not(.nav__cta)'));
   var sections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
   if (navLinks.length && sections.length && 'IntersectionObserver' in window) {
     var spy = new IntersectionObserver(function (entries) {
