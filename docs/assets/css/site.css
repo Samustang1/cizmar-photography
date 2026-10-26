@@ -153,7 +153,10 @@ ul, ol { padding: 0; list-style: none; }
   color: var(--ink);
   border-bottom-color: var(--line-soft);
 }
-.head.is-menu { color: #fff; background: transparent; border-bottom-color: transparent; }
+.head.is-menu {
+  color: #fff; background: transparent; border-bottom-color: transparent;
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+}
 
 .brand { display: flex; align-items: baseline; gap: .7rem; position: relative; z-index: 3; }
 .brand__mark {
@@ -193,9 +196,9 @@ ul, ol { padding: 0; list-style: none; }
   opacity: 1 !important;
 }
 .nav__cta::after { display: none; }
-.nav__cta:hover { background: currentColor; }
-.head:not(.is-stuck) .nav__cta:hover { color: var(--ink) !important; }
-.head.is-stuck .nav__cta:hover { color: var(--bg) !important; }
+.head:not(.is-stuck) .nav__cta:hover { background: #fff; color: var(--ink); }
+.head.is-stuck .nav__cta:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.head.is-menu .nav__cta:hover { background: #fff; color: var(--dark); border-color: #fff; }
 
 .burger { display: none; width: 40px; height: 40px; position: relative; z-index: 3; }
 .burger span {
@@ -327,9 +330,11 @@ section[id] { scroll-margin-top: clamp(64px, 7vw, 84px); }
   padding: .5rem .8rem;
   border: 1px solid transparent;
   border-radius: 999px;
-  transition: color .2s var(--ease-out), border-color .2s var(--ease-out);
+  transition: color .2s var(--ease-out), border-color .2s var(--ease-out),
+              transform .12s var(--ease-out);
 }
 .filter:hover { color: var(--ink); }
+.filter:active { transform: scale(.96); }
 .filter.is-active { color: var(--ink); border-color: var(--line); }
 
 .work {
@@ -599,7 +604,13 @@ section[id] { scroll-margin-top: clamp(64px, 7vw, 84px); }
   transition: opacity .22s var(--ease-out), visibility .22s var(--ease-out);
 }
 .lb.is-open { opacity: 1; visibility: visible; }
-.lb__fig { max-width: min(92vw, 1280px); max-height: 84vh; display: grid; gap: .8rem; justify-items: center; }
+.lb__fig {
+  max-width: min(92vw, 1280px); max-height: 84vh;
+  display: grid; gap: .8rem; justify-items: center;
+  transform: scale(.985);
+  transition: transform .3s var(--ease-out);
+}
+.lb.is-open .lb__fig { transform: none; }
 .lb__fig img { max-width: 92vw; max-height: 78vh; object-fit: contain; }
 .lb__fig figcaption { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255, 255, 255, .7); }
 .lb__close, .lb__nav {
