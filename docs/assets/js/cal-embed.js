@@ -62,10 +62,10 @@
 
     window.Cal('ui', {
       cssVarsPerTheme: {
-        light: { 'cal-brand': '#e2342b' },
-        dark: { 'cal-brand': '#e2342b' }
+        light: { 'cal-brand': '#ff3b30' },
+        dark: { 'cal-brand': '#ff3b30' }
       },
-      hideEventTypeDetails: false,
+      hideEventTypeDetails: true,
       layout: 'month_view'
     });
 

@@ -7,16 +7,31 @@ Jednostránkový statický web s rezervačným kalendárom Cal.com.
 - **Zdroj:** priečinok `docs/` (odsiaľto sa nasadzuje cez GitHub Actions)
 - **Fotky:** dočasne ukážkové (Unsplash), pripravené na výmenu za vlastné
 
+## Dizajn — Nocturne
+
+Tmavý cinematický smer postavený od základov:
+
+- split hero: typografický panel vľavo, full-bleed fotografia vpravo
+- Anton + Instrument Serif italic + Inter, akcent `#ff3b30`
+- asymetrická dvojstĺpcová galéria s offsetom
+- papierová (svetlá) sekcia Služby / O mne, tmavý kontakt
+- žiadny marquee, žiadne filtre ani „programátorské" panely
+- jemné motion efekty s rešpektom k `prefers-reduced-motion`
+
 ## Štruktúra
 
 ```
 docs/
-├─ index.html            # celá stránka (hero, prístup, práce, služby, o mne, kontakt)
+├─ index.html              # celá stránka (hero, prístup, práce, služby, o mne, kontakt)
 └─ assets/
-   ├─ css/site.css       # štýly (tokeny v :root)
+   ├─ css/nocturne.css     # štýly (tokeny v :root)
+   ├─ img/
+   │  ├─ favicon.svg
+   │  ├─ og.jpg            # Open Graph karta 1200×630
+   │  └─ placeholder.svg
    └─ js/
-      ├─ site.js         # menu, sticky hlavička, filtre, lightbox, reveal
-      └─ cal-embed.js    # lazy-load Cal.com inline kalendára
+      ├─ nocturne.js       # menu, sticky hlavička, scrollspy, reveal, lightbox
+      └─ cal-embed.js      # lazy-load Cal.com inline kalendára
 ```
 
 ## Rezervácia
@@ -32,7 +47,8 @@ Ak sa kalendár nezobrazí, v karte je odkaz na otvorenie v novom okne.
 - `archive/portfolio-v1/` — pôvodná viacstránková verzia
 - `archive/portfolio-v2/` — druhá verzia
 - `archive/v2/` — medziverzia
-- `archive/portfolio-v3/` — verzia pred redizajnom (október 2026)
+- `archive/portfolio-v3/` — verzia pred v4 (editoriálny štýl)
+- `archive/portfolio-v4/` — verzia pred Nocturne (off-white editorial)
 
 Archív nie je súčasťou nasadenej stránky.
 
