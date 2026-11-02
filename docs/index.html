@@ -3,29 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cizmar Photography — Automobilová a motorsportová fotografia z Popradu</title>
-  <meta name="description" content="Automobilová a motorsportová fotografia z Popradu. Autá, detaily a atmosféra trate v prirodzenom svetle — Cizmar Photography.">
-  <meta name="theme-color" content="#0b0b0c">
+  <title>Cizmar Photography — Automobilová a motorsportová fotografia | Poprad</title>
+  <meta name="description" content="Portfólio automobilovej a motorsportovej fotografie z Popradu. Autá, detaily a atmosféra trate v prirodzenom svetle.">
+  <meta name="theme-color" content="#060606">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Cizmar Photography">
   <meta property="og:locale" content="sk_SK">
   <meta property="og:url" content="https://samustang1.github.io/cizmar-photography/">
-  <meta property="og:title" content="Cizmar Photography — Automobilová a motorsportová fotografia">
-  <meta property="og:description" content="Fotím autá a motorsport v prirodzenom svetle. Poprad, Slovensko.">
+  <meta property="og:title" content="Cizmar Photography — Automobilová fotografia">
+  <meta property="og:description" content="Autá, detaily a atmosféra trate. Portfólio z Popradu.">
   <meta property="og:image" content="https://samustang1.github.io/cizmar-photography/assets/img/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Cizmar Photography — tmavý editoriálny vizuál s autom a nápisom Autá, svetlo a pohyb">
+  <meta property="og:image:alt" content="Cizmar Photography — automobilová fotografia">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Cizmar Photography — Automobilová a motorsportová fotografia">
-  <meta name="twitter:description" content="Fotím autá a motorsport v prirodzenom svetle. Poprad, Slovensko.">
+  <meta name="twitter:title" content="Cizmar Photography — Automobilová fotografia">
+  <meta name="twitter:description" content="Autá, detaily a atmosféra trate. Portfólio z Popradu.">
   <meta name="twitter:image" content="https://samustang1.github.io/cizmar-photography/assets/img/og.jpg">
 
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/nocturne.css?v=1">
+  <link rel="stylesheet" href="assets/css/photofirst.css?v=4">
 
   <script type="application/ld+json">
   {
@@ -42,8 +39,7 @@
       "@type": "PostalAddress",
       "addressLocality": "Poprad",
       "addressCountry": "SK"
-    },
-    "sameAs": ["https://www.instagram.com/cizmar.photo/"]
+    }
   }
   </script>
 </head>
@@ -54,20 +50,19 @@
   <!-- ============ HLAVIČKA ============ -->
   <header class="head" id="head">
     <div class="head__in">
-      <a class="brand" href="#home" aria-label="Cizmar Photography — domov">
-        Cizmar<span>Photography</span>
+      <a class="brand" href="#top" aria-label="Cizmar Photography — domov">
+        <span class="brand__mark" aria-hidden="true">//</span>
+        <span class="brand__text">
+          <span class="brand__name">Cizmar</span>
+          <span class="brand__sub">Photography</span>
+        </span>
       </a>
 
       <nav class="nav" id="nav" aria-label="Hlavná navigácia">
-        <a href="#prace">Práce</a>
-        <a href="#sluzby">Služby</a>
+        <a href="#portfolio">Portfólio</a>
         <a href="#o-mne">O mne</a>
-        <a class="nav__cta" href="#kontakt">Kontakt</a>
-
-        <div class="nav__extra">
-          <a href="mailto:cizsamko@gmail.com">cizsamko@gmail.com</a>
-          <a href="tel:+421910186170">+421 910 186 170</a>
-        </div>
+        <a href="#sluzby">Služby</a>
+        <a href="#kontakt">Kontakt</a>
       </nav>
 
       <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Otvoriť menu">
@@ -76,278 +71,206 @@
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
 
     <!-- ============ HERO ============ -->
-    <section class="hero" id="home">
-      <div class="hero__copy">
-        <p class="hero__kicker"><span aria-hidden="true"></span>Automobilová &amp; motorsportová fotografia</p>
-
-        <div class="hero__main">
-          <h1 class="hero__title">
-            <span class="hero__line">Autá</span>
-            <span class="hero__line">svetlo</span>
-            <em class="hero__line hero__line--em">a pohyb.</em>
-          </h1>
-
-          <p class="hero__lead">
-            Fotím autá a motorsport v prirodzenom svetle. Z Popradu —
-            na mieste, ktoré vyberieme spolu.
-          </p>
-
-          <div class="hero__actions">
-            <a class="btn btn--accent" href="#kontakt">Rezervovať termín</a>
-            <a class="btn btn--text" href="#prace">Pozrieť práce <span aria-hidden="true">↓</span></a>
-          </div>
-
-          <ul class="hero__meta">
-            <li><span>Lokalita</span>Poprad, Slovensko</li>
-            <li><span>Zameranie</span>Autá &amp; motorsport</li>
-            <li><span>Fotenie</span>cca 3 hodiny</li>
-            <li><span>Kontakt</span><a href="tel:+421910186170">+421 910 186 170</a></li>
-          </ul>
-        </div>
-      </div>
-
+    <section class="hero" id="top">
       <div class="hero__media">
-        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1800&q=82"
-             alt="Športový automobil v prirodzenom svetle"
+        <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=2200&q=85"
+             alt="Športové auto Nissan GT-R na ceste pri západe slnka"
              fetchpriority="high"
              onerror="this.onerror=null;this.src='assets/img/placeholder.svg';">
-        <p class="hero__badge">Automotive<br>Motorsport</p>
-        <p class="hero__vertical" aria-hidden="true">Poprad — Slovensko</p>
+      </div>
+      <div class="hero__shade" aria-hidden="true"></div>
+
+      <div class="hero__inner wrap">
+        <div class="hero__lockup">
+          <h1 class="hero__name">Cizmar</h1>
+          <div class="hero__tag">
+            <p class="hero__tagline">Automobilová<br>a motorsportová<br>fotografia</p>
+            <p class="hero__place">Poprad, Slovensko</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__foot">
+        <div class="wrap hero__foot-in">
+          <p class="hero__loc">Poprad / Slovensko</p>
+          <p class="hero__mid">Autá · Detaily · Motorsport</p>
+          <a class="hero__scroll" href="#portfolio">Portfólio <span aria-hidden="true">↓</span></a>
+        </div>
       </div>
     </section>
 
-    <!-- ============ PRÍSTUP ============ -->
-    <section class="intro" id="pristup">
+    <!-- ============ KTO JE CIZMAR ============ -->
+    <section class="intro" id="o-mne">
       <div class="wrap intro__grid">
-        <p class="label">01 — Prístup</p>
-
-        <div>
-          <h2 class="intro__statement">
-            Fotím autá tak, ako vyzerajú <em>naozaj.</em>
-          </h2>
-
-          <div class="intro__cols">
-            <p>
-              Bez pózovania a umelých efektov. Len svetlo, línie a priestor,
-              v ktorom auto vynikne — či už stojí, alebo ide.
-            </p>
-            <p class="muted">
-              Statické zábery na miestach, kde auto dýcha, aj rýchlosť a atmosféra
-              na trati. Vždy v prirodzenom svetle a s dôrazom na detail.
-            </p>
-          </div>
+        <div class="intro__text">
+          <h2 class="section-title"><span class="mark" aria-hidden="true">//</span>Kto je Cizmar?</h2>
+          <p class="intro__lead">Automobilová a motorsportová fotografia z Popradu. Fotím autá, detaily a atmosféru trate — prirodzene, bez prehnaného pózovania.</p>
+          <p>Každé auto má svoj charakter. Mojou úlohou je nájsť svetlo, uhol a moment, v ktorom vynikne.</p>
+          <a class="btn" href="#kontakt">Rezervovať termín</a>
         </div>
+
+        <figure class="intro__img">
+          <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=82"
+               alt="Fotoaparát a objektívy na tmavom podklade" loading="lazy" decoding="async"
+               onerror="this.onerror=null;this.src='assets/img/placeholder.svg';">
+        </figure>
       </div>
     </section>
 
-    <!-- ============ PRÁCE ============ -->
-    <section class="work" id="prace">
-      <div class="wrap">
-        <header class="work__head">
-          <div>
-            <p class="label">02 — Práce</p>
-            <h2 class="work__title">Vybrané<br>práce</h2>
-          </div>
-          <p class="work__count"><em>06</em> záberov</p>
-        </header>
+    <!-- ============ PORTFÓLIO ============ -->
+    <section class="portfolio" id="portfolio">
+      <div class="wrap portfolio__head">
+        <h2 class="section-title"><span class="mark" aria-hidden="true">//</span>Portfólio</h2>
+        <p class="meta">Autá · Detaily · Motorsport</p>
+      </div>
 
-        <div class="work__cols">
-          <div class="work__col">
-            <figure class="shot shot--p reveal">
-              <button class="shot__btn" type="button" aria-label="Zväčšiť: Línia">
-                <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=1200&q=80"
-                     alt="Predná časť športového auta v noci" loading="lazy" decoding="async"
-                     onerror="this.onerror=null;this.src='assets/img/placeholder.svg';">
-                <span class="shot__idx">01</span>
-              </button>
-              <figcaption>
-                <span class="shot__cat">Exteriér</span>
-                <h3>Línia</h3>
-                <span class="shot__no">01 / 06</span>
-              </figcaption>
-            </figure>
+      <div class="grid">
+        <figure class="ph">
+          <button class="ph__btn" type="button" aria-label="Zväčšiť fotografiu: Les">
+            <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1400&q=82"
+                 alt="Červený Mercedes-AMG na lesnej ceste" loading="lazy" decoding="async"
+                 onerror="this.onerror=null;this.src='assets/img/placeholder.svg';">
+            <span class="ph__no">01</span>
+            <span class="ph__open" aria-hidden="true">↗</span>
+          </button>
+          <figcaption class="ph__cap"><span>Exteriér</span><b>Les</b></figcaption>
+        </figure>
 
-            <figure class="shot shot--w reveal">
-              <button class="shot__btn" type="button" aria-label="Zväčšiť: Pohyb">
-                <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1400&q=80"
-                     alt="Pretekárske auto na trati" loading="lazy" decoding="async"
-                     onerror="this.onerror=null;this.src='assets/img/placeholder.svg';">
-                <span class="shot__idx">03</span>
-              </button>
-              <figcaption>
-                <span class="shot__cat">Motorsport</span>
-                <h3>Pohyb</h3>
-                <span class="shot__no">03 / 06</span>
-              </figcaption>
-            </figure>
+        <figure class="ph">
+          <button class="ph__btn" type="button" aria-label="Zväčšiť fotografiu: Noc">
+            <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=1400&q=82"
+                 alt="Predná časť Bugatti v noci" loading="lazy" decoding="async"
+                 onerror="this.onerror=null;this.src='assets/img/placeholder.svg';">
+            <span class="ph__no">02</span>
+            <span class="ph__open" aria-hidden="true">↗</span>
+          </button>
+          <figcaption class="ph__cap"><span>Exteriér</span><b>Noc</b></figcaption>
+        </figure>
 
-            <figure class="shot shot--s reveal">
-              <button class="shot__btn" type="button" aria-label="Zväčšiť: Kov">
-                <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1200&q=80"
-                     alt="Detail prednej časti automobilu" loading="lazy" decoding="async"
-                     onerror="this.onerror=null;this.src='assets/img/placeholder.svg';">
-                <span class="shot__idx">05</span>
-              </button>
-              <figcaption>
-                <span class="shot__cat">Detaily</span>
-                <h3>Kov</h3>
-                <span class="shot__no">05 / 06</span>
-              </figcaption>
-            </figure>
-          </div>
+        <figure class="ph">
+          <button class="ph__btn" type="button" aria-label="Zväčšiť fotografiu: Zlatá hodina">
+            <img src="https://images.unsplash.com/photo-1494905998402-395d579af36f?auto=format&fit=crop&w=1400&q=82"
+                 alt="Čierny Ford Mustang v teplom svetle" loading="lazy" decoding="async"
+                 onerror="this.onerror=null;this.src='assets/img/placeholder.svg';">
+            <span class="ph__no">03</span>
+            <span class="ph__open" aria-hidden="true">↗</span>
+          </button>
+          <figcaption class="ph__cap"><span>Exteriér</span><b>Zlatá hodina</b></figcaption>
+        </figure>
 
-          <div class="work__col work__col--b">
-            <figure class="shot shot--p reveal">
-              <button class="shot__btn" type="button" aria-label="Zväčšiť: Detail">
-                <img src="https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=1200&q=80"
-                     alt="Detail automobilu v tme" loading="lazy" decoding="async"
-                     onerror="this.onerror=null;this.src='assets/img/placeholder.svg';">
-                <span class="shot__idx">02</span>
-              </button>
-              <figcaption>
-                <span class="shot__cat">Detaily</span>
-                <h3>Detail</h3>
-                <span class="shot__no">02 / 06</span>
-              </figcaption>
-            </figure>
+        <figure class="ph">
+          <button class="ph__btn" type="button" aria-label="Zväčšiť fotografiu: Trať">
+            <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1400&q=82"
+                 alt="Žlté pretekárske Ferrari v pohybe" loading="lazy" decoding="async"
+                 onerror="this.onerror=null;this.src='assets/img/placeholder.svg';">
+            <span class="ph__no">04</span>
+            <span class="ph__open" aria-hidden="true">↗</span>
+          </button>
+          <figcaption class="ph__cap"><span>Motorsport</span><b>Trať</b></figcaption>
+        </figure>
 
-            <figure class="shot shot--l reveal">
-              <button class="shot__btn" type="button" aria-label="Zväčšiť: Svetlo">
-                <img src="https://images.unsplash.com/photo-1494905998402-395d579af36f?auto=format&fit=crop&w=1400&q=80"
-                     alt="Tmavý automobil v teplom svetle" loading="lazy" decoding="async"
-                     onerror="this.onerror=null;this.src='assets/img/placeholder.svg';">
-                <span class="shot__idx">04</span>
-              </button>
-              <figcaption>
-                <span class="shot__cat">Exteriér</span>
-                <h3>Svetlo</h3>
-                <span class="shot__no">04 / 06</span>
-              </figcaption>
-            </figure>
+        <figure class="ph">
+          <button class="ph__btn" type="button" aria-label="Zväčšiť fotografiu: Diaľnica">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=82"
+                 alt="Čierne Porsche Panamera na diaľnici" loading="lazy" decoding="async"
+                 onerror="this.onerror=null;this.src='assets/img/placeholder.svg';">
+            <span class="ph__no">05</span>
+            <span class="ph__open" aria-hidden="true">↗</span>
+          </button>
+          <figcaption class="ph__cap"><span>Exteriér</span><b>Diaľnica</b></figcaption>
+        </figure>
 
-            <figure class="shot shot--s reveal">
-              <button class="shot__btn" type="button" aria-label="Zväčšiť: Noc">
-                <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=80"
-                     alt="Športové auto na ceste pri západe slnka" loading="lazy" decoding="async"
-                     onerror="this.onerror=null;this.src='assets/img/placeholder.svg';">
-                <span class="shot__idx">06</span>
-              </button>
-              <figcaption>
-                <span class="shot__cat">Exteriér</span>
-                <h3>Cesta</h3>
-                <span class="shot__no">06 / 06</span>
-              </figcaption>
-            </figure>
-          </div>
-        </div>
+        <figure class="ph">
+          <button class="ph__btn" type="button" aria-label="Zväčšiť fotografiu: Asfalt">
+            <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1400&q=82"
+                 alt="Ford Mustang z prednej časti na asfalte" loading="lazy" decoding="async"
+                 onerror="this.onerror=null;this.src='assets/img/placeholder.svg';">
+            <span class="ph__no">06</span>
+            <span class="ph__open" aria-hidden="true">↗</span>
+          </button>
+          <figcaption class="ph__cap"><span>Motorsport</span><b>Asfalt</b></figcaption>
+        </figure>
 
-        <div class="work__cta">
-          <a class="link-arrow" href="#kontakt">Rezervovať fotenie <span aria-hidden="true">→</span></a>
-        </div>
+        <figure class="ph ph--portrait">
+          <button class="ph__btn" type="button" aria-label="Zväčšiť fotografiu: Svetlo">
+            <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1200&q=82"
+                 alt="Detail prednej časti červeného auta" loading="lazy" decoding="async"
+                 onerror="this.onerror=null;this.src='assets/img/placeholder.svg';">
+            <span class="ph__no">07</span>
+            <span class="ph__open" aria-hidden="true">↗</span>
+          </button>
+          <figcaption class="ph__cap"><span>Detaily</span><b>Svetlo</b></figcaption>
+        </figure>
+
+        <figure class="ph ph--portrait">
+          <button class="ph__btn" type="button" aria-label="Zväčšiť fotografiu: Kov">
+            <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=1200&q=82"
+                 alt="Šedý BMW M4 pri západe slnka" loading="lazy" decoding="async"
+                 onerror="this.onerror=null;this.src='assets/img/placeholder.svg';">
+            <span class="ph__no">08</span>
+            <span class="ph__open" aria-hidden="true">↗</span>
+          </button>
+          <figcaption class="ph__cap"><span>Exteriér</span><b>Kov</b></figcaption>
+        </figure>
+
+        <figure class="ph ph--portrait">
+          <button class="ph__btn" type="button" aria-label="Zväčšiť fotografiu: Noc v detaile">
+            <img src="https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=1200&q=82"
+                 alt="Modré svetlo prednej časti Audi v garáži" loading="lazy" decoding="async"
+                 onerror="this.onerror=null;this.src='assets/img/placeholder.svg';">
+            <span class="ph__no">09</span>
+            <span class="ph__open" aria-hidden="true">↗</span>
+          </button>
+          <figcaption class="ph__cap"><span>Detaily</span><b>Noc v detaile</b></figcaption>
+        </figure>
       </div>
     </section>
 
-    <!-- ============ CITÁT ============ -->
-    <section class="pull" aria-label="Prístup k foteniu">
-      <div class="wrap pull__in">
-        <span class="pull__star" aria-hidden="true">✳</span>
-        <p>Bez pózovania. Bez filtrov. <em>Len svetlo, kov a pohyb.</em></p>
+    <!-- ============ FOTENIE NA MIERU ============ -->
+    <section class="band">
+      <div class="band__media">
+        <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=2200&q=82"
+             alt="Biele Lamborghini Huracán v horských horách" loading="lazy" decoding="async"
+             onerror="this.onerror=null;this.src='assets/img/placeholder.svg';">
+      </div>
+      <div class="band__shade" aria-hidden="true"></div>
+      <div class="wrap band__in">
+        <p class="kicker"><span class="mark" aria-hidden="true">//</span>Fotenie na mieru</p>
+        <h2 class="band__title">Tvoje auto.<br>Nechaj ho vyniknúť.</h2>
+        <p class="band__text">Statické zábery, detaily aj atmosféra trate. Termín si vyberieš online.</p>
+        <a class="btn btn--light" href="#kontakt">Rezervovať termín</a>
       </div>
     </section>
 
     <!-- ============ SLUŽBY ============ -->
-    <section class="services paper" id="sluzby">
-      <div class="wrap">
-        <header class="sec-head">
-          <p class="label">03 — Služby</p>
-          <h2 class="sec-title">Čo nafotím</h2>
-        </header>
+    <section class="services" id="sluzby">
+      <div class="wrap services__grid">
+        <div class="services__intro">
+          <h2 class="section-title"><span class="mark" aria-hidden="true">//</span>Služby</h2>
+          <p>Fotenie áut a motorsportu v Poprade a okolí. Termín a miesto dohodneme podľa tvojich predstáv.</p>
+        </div>
 
-        <article class="service reveal">
-          <p class="service__num" aria-hidden="true">01</p>
-          <div class="service__body">
-            <h3>Fotenie auta</h3>
-            <p>Statické zábery tvojho auta na dohodnutom mieste — exteriér, interiér aj detaily.</p>
-            <ul class="chips">
-              <li>výber miesta</li>
-              <li>exteriér / interiér</li>
-              <li>upravené fotky</li>
-            </ul>
+        <div class="services__list">
+          <div class="service">
+            <span class="service__no">01</span>
+            <div>
+              <h3>Fotenie auta</h3>
+              <p>Statické zábery auta na dohodnutom mieste — celok, línie a detaily.</p>
+            </div>
+            <span class="service__price">Na dohodu</span>
           </div>
-          <p class="service__price">Na dohodu</p>
-        </article>
 
-        <article class="service reveal">
-          <p class="service__num" aria-hidden="true">02</p>
-          <div class="service__body">
-            <h3>Motorsport</h3>
-            <p>Fotenie na trati a pri podujatiach — rýchlosť, dianie a atmosféra pretekov.</p>
-            <ul class="chips">
-              <li>akcia a pohyb</li>
-              <li>autá a jazdci</li>
-              <li>výber záberov</li>
-            </ul>
+          <div class="service">
+            <span class="service__no">02</span>
+            <div>
+              <h3>Motorsport</h3>
+              <p>Fotenie na trati a pri podujatiach — rýchlosť, dianie a atmosféra pretekov.</p>
+            </div>
+            <span class="service__price">Na dohodu</span>
           </div>
-          <p class="service__price">Na dohodu</p>
-        </article>
-
-        <ol class="process" aria-label="Priebeh spolupráce">
-          <li>
-            <span>01</span>
-            <h4>Napíšeš</h4>
-            <p>Vyberieš termín alebo napíšeš e-mail. Povieš mi, čo máš v hlave.</p>
-          </li>
-          <li>
-            <span>02</span>
-            <h4>Dohodneme</h4>
-            <p>Vyberieme miesto, čas a rozsah fotenia — všetko na dohodu.</p>
-          </li>
-          <li>
-            <span>03</span>
-            <h4>Fotíme</h4>
-            <p>Stretneme sa a nafotím tvoje auto v prirodzenom svetle.</p>
-          </li>
-          <li>
-            <span>04</span>
-            <h4>Dostaneš</h4>
-            <p>Po zaplatení ti doručím upravené fotky v plnom rozlíšení.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ============ O MNE ============ -->
-    <section class="about paper" id="o-mne">
-      <div class="wrap about__grid">
-        <figure class="about__media reveal">
-          <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80"
-               alt="Fotoaparát pripravený na fotenie" loading="lazy" decoding="async"
-               onerror="this.onerror=null;this.src='assets/img/placeholder.svg';">
-        </figure>
-
-        <div class="about__text">
-          <p class="label">04 — Kto som</p>
-          <h2 class="sec-title">Začínam.<br>A fotím <em>naplno.</em></h2>
-          <p>
-            Autá a motorsport ma bavia odmalička. Fotenie je pre mňa spôsob,
-            ako ich krásu zachytiť a podeliť sa o ňu — bez pózovania
-            a bez umelých efektov.
-          </p>
-          <p class="muted">
-            Som z Popradu. Fotím statické autá na miestach, kde vyniknú, aj rýchlosť
-            a dianie na trati. Ak chceš poctivé zábery svojho auta alebo motorsportu, ozvi sa.
-          </p>
-
-          <ul class="facts">
-            <li><span>Lokalita</span>Poprad a okolie</li>
-            <li><span>Zameranie</span>Autá &amp; motorsport</li>
-            <li><span>Rezervácia</span>Online, cca 3 h</li>
-          </ul>
-
-          <a class="link-arrow" href="#kontakt">Napíš mi <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
@@ -355,45 +278,35 @@
     <!-- ============ KONTAKT ============ -->
     <section class="contact" id="kontakt">
       <div class="wrap">
-        <header class="contact__head">
-          <div>
-            <p class="label">05 — Rezervácia</p>
-            <h2 class="contact__title">Nafotíme<br><em>tvoje auto.</em></h2>
-          </div>
-          <p class="contact__lead">
-            Vyber si termín priamo v kalendári — alebo mi napíš
-            a dohodneme detaily.
-          </p>
-        </header>
+        <div class="contact__head">
+          <h2 class="section-title"><span class="mark" aria-hidden="true">//</span>Kontakt</h2>
+          <p class="contact__title">Poďme nafotiť tvoje auto.</p>
+          <p class="contact__lead">Vyber si termín v kalendári alebo mi napíš. Fotenie trvá cca 3 hodiny.</p>
+        </div>
 
         <div class="contact__grid">
-          <div>
+          <div class="contact__details">
             <ul class="contact__list">
               <li><span>E-mail</span><a href="mailto:cizsamko@gmail.com">cizsamko@gmail.com</a></li>
               <li><span>Telefón</span><a href="tel:+421910186170">+421 910 186 170</a></li>
-              <li><span>Kde fotím</span><b>Poprad a okolie — na dohodu</b></li>
-              <li><span>Instagram</span><a href="https://www.instagram.com/cizmar.photo/" target="_blank" rel="noopener">@cizmar.photo</a></li>
+              <li><span>Kde fotím</span><b>Poprad a okolie</b></li>
             </ul>
-
-            <p class="contact__note">
-              Fotenie trvá cca 3 hodiny. Termín potvrdím e-mailom.
-            </p>
+            <a class="btn" href="mailto:cizsamko@gmail.com">Napísať e-mail</a>
+            <p class="contact__note">Ak ti nesedí termín v kalendári, napíš mi — dohodneme iný.</p>
           </div>
 
-          <div class="contact__cal">
-            <div class="cal-card">
-              <p class="cal-label">Vyber si termín</p>
-              <div id="calInline" class="cal-inline" aria-busy="true">
-                <div class="cal-inline__loader" aria-hidden="true"><span></span></div>
-              </div>
-              <p class="cal-note">
-                Ak sa kalendár nezobrazí,
-                <a href="https://cal.com/cizmar.photo/automobilove-fotenie" target="_blank" rel="noopener">otvor ho v novom okne</a>.
-              </p>
-              <noscript>
-                <p class="cal-note"><a href="https://cal.com/cizmar.photo/automobilove-fotenie" target="_blank" rel="noopener">Otvoriť rezervačný kalendár</a></p>
-              </noscript>
+          <div class="cal-card">
+            <p class="cal-label">Vyber si termín</p>
+            <div id="calInline" class="cal-inline" aria-busy="true">
+              <div class="cal-inline__loader" aria-hidden="true"><span></span></div>
             </div>
+            <p class="cal-note">
+              Ak sa kalendár nezobrazí,
+              <a href="https://cal.com/cizmar.photo/automobilove-fotenie" target="_blank" rel="noopener">otvor ho v novom okne</a>.
+            </p>
+            <noscript>
+              <p class="cal-note"><a href="https://cal.com/cizmar.photo/automobilove-fotenie" target="_blank" rel="noopener">Otvoriť rezervačný kalendár</a></p>
+            </noscript>
           </div>
         </div>
       </div>
@@ -402,45 +315,28 @@
   </main>
 
   <!-- ============ PÄTIČKA ============ -->
-  <footer class="foot">
-    <div class="wrap">
-      <div class="foot__grid">
-        <div>
-          <p class="foot__brand">Cizmar Photography</p>
-          <p class="foot__desc">Automobilová a motorsportová fotografia z Popradu.</p>
-        </div>
-
-        <nav class="foot__col" aria-label="Pätička">
-          <h4>Navigácia</h4>
-          <a href="#prace">Práce</a>
-          <a href="#sluzby">Služby</a>
-          <a href="#o-mne">O mne</a>
-          <a href="#kontakt">Kontakt</a>
-        </nav>
-
-        <div class="foot__col">
-          <h4>Spojenie</h4>
-          <a href="mailto:cizsamko@gmail.com">cizsamko@gmail.com</a>
-          <a href="tel:+421910186170">+421 910 186 170</a>
-          <a href="https://www.instagram.com/cizmar.photo/" target="_blank" rel="noopener">Instagram</a>
-        </div>
-
-        <div class="foot__top-wrap">
-          <a class="foot__top" href="#home" aria-label="Späť nahor">↑</a>
-        </div>
+  <footer class="footer">
+    <div class="wrap footer__main">
+      <div class="footer__brand">
+        <span class="mark" aria-hidden="true">//</span>
+        <span>Cizmar <em>Photography</em></span>
       </div>
-
-      <div class="foot__bottom">
-        <span>© <span id="year">2026</span> Cizmar Photography</span>
-        <span>Poprad, Slovensko</span>
+      <p class="footer__role">Automobilová a motorsportová fotografia<br>Poprad, Slovensko</p>
+      <div class="footer__links">
+        <a href="mailto:cizsamko@gmail.com">cizsamko@gmail.com</a>
+        <a href="tel:+421910186170">+421 910 186 170</a>
       </div>
+    </div>
+    <div class="wrap footer__bottom">
+      <p>© <span id="year">2026</span> Cizmar Photography</p>
+      <a href="#top">Späť nahor ↑</a>
     </div>
   </footer>
 
   <!-- ============ LIGHTBOX ============ -->
   <div class="lb" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Náhľad fotografie">
     <div class="lb__bar">
-      <span class="lb__count" id="lbCount">01 / 06</span>
+      <span class="lb__count" id="lbCount">01 / 09</span>
       <button class="lb__close" id="lbClose" type="button">Zavrieť <span aria-hidden="true">✕</span></button>
     </div>
     <button class="lb__nav lb__nav--prev" id="lbPrev" type="button" aria-label="Predchádzajúca fotografia">‹</button>
@@ -451,7 +347,7 @@
     <button class="lb__nav lb__nav--next" id="lbNext" type="button" aria-label="Ďalšia fotografia">›</button>
   </div>
 
-  <script src="assets/js/nocturne.js?v=1" defer></script>
-  <script src="assets/js/cal-embed.js?v=5" defer></script>
+  <script src="assets/js/photofirst.js?v=4" defer></script>
+  <script src="assets/js/cal-embed.js?v=8" defer></script>
 </body>
 </html>

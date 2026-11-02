@@ -81,6 +81,14 @@
       } else if (tries > 60) {
         clearInterval(timer);
         mount.setAttribute('aria-busy', 'false');
+
+        var loader = mount.querySelector('.cal-inline__loader');
+        if (loader) loader.parentNode.removeChild(loader);
+
+        var fallback = document.createElement('p');
+        fallback.className = 'cal-fallback';
+        fallback.innerHTML = 'Kalendár sa nepodarilo načítať.<br><a href="https://cal.com/cizmar.photo/automobilove-fotenie" target="_blank" rel="noopener">Otvoriť rezerváciu v novom okne</a>';
+        mount.appendChild(fallback);
       }
     }, 500);
   }
