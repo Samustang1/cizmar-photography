@@ -1,0 +1,45 @@
+{
+  "version": "1.0",
+  "updated": "2026-11-02",
+  "timezone": "Europe/Bratislava",
+  "booking": {
+    "minDuration": 2,
+    "maxDuration": 4,
+    "defaultDuration": 3,
+    "minNoticeHours": 48,
+    "maxHorizonDays": 60,
+    "maxBookingsPerDay": 2,
+    "bufferMinutes": 60
+  },
+  "availability": {
+    "weekday": {
+      "enabled": true,
+      "start": "15:00",
+      "end": "19:00",
+      "slotMinutes": 30
+    },
+    "weekend": {
+      "enabled": true,
+      "start": "09:00",
+      "end": "19:00",
+      "slotMinutes": 30
+    }
+  },
+  "services": [
+    { "id": "auto", "label": "Fotenie auta" },
+    { "id": "motorsport", "label": "Motorsport" }
+  ],
+  "fields": {
+    "name": { "required": true, "label": "Meno" },
+    "email": { "required": true, "label": "E-mail", "type": "email" },
+    "phone": { "required": true, "label": "Telefón", "type": "tel" },
+    "date": { "required": true, "label": "Dátum" },
+    "time": { "required": true, "label": "Čas" },
+    "duration": { "required": true, "label": "Dĺžka" },
+    "type": { "required": true, "label": "Typ fotenia" },
+    "car": { "required": true, "label": "Auto" },
+    "location": { "required": true, "label": "Miesto" },
+    "notes": { "required": false, "label": "Poznámky" },
+    "gdpr": { "required": true, "label": "GDPR súhlas" }
+  }
+}

@@ -284,12 +284,18 @@
     }
   });
 
-  /* ===== Rezervačný formulár — Cal.com nastavenia ===== */
+  /* ===== Rezervačný formulár — konfigurácia z inline scriptu ===== */
   var form = doc.getElementById('bookingForm');
   if (form) {
     var dateInput = doc.getElementById('booking-date');
     var timeInput = doc.getElementById('booking-time');
     var durationInput = doc.getElementById('booking-duration');
+    var typeInput = doc.getElementById('booking-type');
+    var config = window.BOOKING_CONFIG || {
+      booking: { minDuration: 2, maxDuration: 4, defaultDuration: 3, minNoticeHours: 48, maxHorizonDays: 60 },
+      availability: { weekday: { enabled: true, start: '15:00', end: '19:00', slotMinutes: 30 }, weekend: { enabled: true, start: '09:00', end: '19:00', slotMinutes: 30 } },
+      services: [{id:'auto',label:'Fotenie auta'},{id:'motorsport',label:'Motorsport'}]
+    };
 
     function pad2(n) { return String(n).padStart(2, '0'); }
 
@@ -308,40 +314,105 @@
       return day === 0 || day === 6;
     }
 
-    function updateTimeLimits() {
+    function getSlotMinutes(dayType) {
+      return config?.availability?.[dayType]?.slotMinutes || 30;
+    }
+
+    function getTimeRange(dayType) {
+      var avail = config?.availability?.[dayType];
+      if (!avail || !avail.enabled) return null;
+      return { start: avail.start, end: avail.end };
+    }
+
+    function generateTimeSlots(start, end, slotMinutes) {
+      var slots = [];
+      var parts = start.split(':');
+      var h = parseInt(parts[0], 10);
+      var m = parseInt(parts[1], 10);
+      var endParts = end.split(':');
+      var endH = parseInt(endParts[0], 10);
+      var endM = parseInt(endParts[1], 10);
+      var endTotal = endH * 60 + endM;
+      while (h * 60 + m <= endTotal) {
+        slots.push(pad2(h) + ':' + pad2(m));
+        m += slotMinutes;
+        if (m >= 60) { h += Math.floor(m / 60); m = m % 60; }
+      }
+      return slots;
+    }
+
+    function updateTimeSelect() {
       if (!dateInput || !timeInput) return;
       var selected = dateInput.value ? new Date(dateInput.value + 'T00:00:00') : null;
-      if (!selected) return;
+      if (!selected) { timeInput.innerHTML = '<option value="">Vyber dátum</option>'; return; }
       var weekend = isWeekend(selected);
-      if (weekend) {
-        timeInput.min = '09:00';
-        timeInput.max = '16:00'; // last 3h slot ends 19:00
-      } else {
-        timeInput.min = '15:00';
-        timeInput.max = '16:00'; // last 3h slot ends 19:00
+      var dayType = weekend ? 'weekend' : 'weekday';
+      var range = getTimeRange(dayType);
+      var slotMin = getSlotMinutes(dayType);
+      if (!range) { timeInput.innerHTML = '<option value="">Nedostupné</option>'; return; }
+      // max start time = end - minDuration * 60
+      var minDur = config?.booking?.minDuration || 2;
+      var endTotal = parseInt(range.end.split(':')[0], 10) * 60 + parseInt(range.end.split(':')[1], 10);
+      var maxStartTotal = endTotal - minDur * 60;
+      var startParts = range.start.split(':');
+      var h = parseInt(startParts[0], 10);
+      var m = parseInt(startParts[1], 10);
+      var slots = [];
+      while (h * 60 + m <= maxStartTotal) {
+        slots.push(pad2(h) + ':' + pad2(m));
+        m += slotMin;
+        if (m >= 60) { h += Math.floor(m / 60); m = m % 60; }
       }
-      // adjust if current value out of range
-      if (timeInput.value && (timeInput.value < timeInput.min || timeInput.value > timeInput.max)) {
-        timeInput.value = timeInput.min;
+      var currentVal = timeInput.value;
+      timeInput.innerHTML = '<option value="">Vyber čas</option>' + slots.map(function(s) {
+        return '<option value="' + s + '"' + (s === currentVal ? ' selected' : '') + '>' + s + '</option>';
+      }).join('');
+    }
+
+    function updateDurationOptions() {
+      if (!durationInput || !config) return;
+      var minD = config.booking.minDuration || 2;
+      var maxD = config.booking.maxDuration || 4;
+      var defD = config.booking.defaultDuration || 3;
+      var html = '';
+      for (var d = minD; d <= maxD; d++) {
+        html += '<option value="' + d + '"' + (d === defD ? ' selected' : '') + '>' + d + ' hodin' + (d > 2 ? 'y' : 'a') + '</option>';
+      }
+      durationInput.innerHTML = html;
+    }
+
+    function updateTypeOptions() {
+      if (!typeInput || !config) return;
+      var html = '';
+      (config.services || []).forEach(function(s) {
+        html += '<option value="' + s.id + '">' + s.label + '</option>';
+      });
+      typeInput.innerHTML = html;
+    }
+
+    function initForm() {
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+      var minDate = addDays(today, Math.ceil((config.booking.minNoticeHours || 48) / 24));
+      var maxDate = addDays(today, config.booking.maxHorizonDays || 60);
+
+      if (dateInput) {
+        dateInput.min = formatDate(minDate);
+        dateInput.max = formatDate(maxDate);
+        dateInput.value = dateInput.min;
+      }
+      updateTimeSelect();
+      updateDurationOptions();
+      updateTypeOptions();
+
+      if (dateInput) {
+        dateInput.addEventListener('change', function() {
+          updateTimeSelect();
+        });
       }
     }
 
-    // init date limits: min = today + 2 days (48h), max = today + 60 days
-    var today = new Date();
-    today.setHours(0, 0, 0, 0);
-    var minDate = addDays(today, 2);
-    var maxDate = addDays(today, 60);
-    if (dateInput) {
-      dateInput.min = formatDate(minDate);
-      dateInput.max = formatDate(maxDate);
-      dateInput.value = dateInput.min;
-      updateTimeLimits();
-    }
-
-    // update time limits when date changes
-    if (dateInput) {
-      dateInput.addEventListener('change', updateTimeLimits);
-    }
+    initForm();
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -349,33 +420,40 @@
       var data = {};
       fd.forEach(function (v, k) { data[k] = v; });
 
-      // validation: duration >= 2
-      if (parseInt(data.duration, 10) < 2) {
-        alert('Minimálna dĺžka fotenia je 2 hodiny.');
+      // validation: duration
+      if (parseInt(data.duration, 10) < (config?.booking?.minDuration || 2)) {
+        alert('Minimálna dĺžka fotenia je ' + (config?.booking?.minDuration || 2) + ' hodiny.');
         return;
       }
 
       // validation: date within range
       var selectedDate = data.date ? new Date(data.date + 'T00:00:00') : null;
+      var today = new Date(); today.setHours(0,0,0,0);
+      var minDate = addDays(today, Math.ceil((config?.booking?.minNoticeHours || 48) / 24));
+      var maxDate = addDays(today, config?.booking?.maxHorizonDays || 60);
       if (!selectedDate || selectedDate < minDate || selectedDate > maxDate) {
-        alert('Dátum musí byť aspoň 48 hodín vopred a max. 60 dní vpred.');
+        alert('Dátum musí byť aspoň ' + (config?.booking?.minNoticeHours || 48) + ' hodín vopred a max. ' + (config?.booking?.maxHorizonDays || 60) + ' dní vpred.');
         return;
       }
 
       // validation: time matches availability
-      if (selectedDate && timeInput) {
+      if (selectedDate && timeInput && data.time) {
         var weekend = isWeekend(selectedDate);
-        var timeVal = data.time;
-        if (!timeVal) { alert('Vyber čas.'); return; }
-        var minAllowed = weekend ? '09:00' : '15:00';
-        var maxAllowed = '16:00'; // last start for 3h ending 19:00
-        if (timeVal < minAllowed || timeVal > maxAllowed) {
-          alert('Čas mimo dostupnosti: ' + (weekend ? ' víkend 09:00–16:00' : ' pracovný deň 15:00–16:00'));
+        var dayType = weekend ? 'weekend' : 'weekday';
+        var range = getTimeRange(dayType);
+        if (!range) { alert('Tento deň nie je dostupný na rezerváciu.'); return; }
+        var minAllowed = range.start;
+        var maxStartTotal = parseInt(range.end.split(':')[0],10)*60 + parseInt(range.end.split(':')[1],10) - (config?.booking?.minDuration||2)*60;
+        var maxAllowedH = Math.floor(maxStartTotal/60);
+        var maxAllowedM = maxStartTotal%60;
+        var maxAllowed = pad2(maxAllowedH) + ':' + pad2(maxAllowedM);
+        if (data.time < minAllowed || data.time > maxAllowed) {
+          alert('Čas mimo dostupnosti: ' + (weekend ? 'víkend ' + range.start + '–' + maxAllowed : 'pracovný deň ' + range.start + '–' + maxAllowed));
           return;
         }
       }
 
-      var typeLabel = data.type === 'auto' ? 'Fotenie auta' : 'Motorsport';
+      var typeLabel = (config?.services?.find(function(s){return s.id===data.type}) || {label:data.type}).label;
       var subject = encodeURIComponent('Rezervácia fotenia — ' + typeLabel + ' — ' + data.date);
       var body = encodeURIComponent(
         'Meno: ' + data.name + '\n' +
@@ -397,7 +475,7 @@
       form.reset();
       if (dateInput) {
         dateInput.value = dateInput.min;
-        updateTimeLimits();
+        updateTimeSelect();
       }
     });
   }

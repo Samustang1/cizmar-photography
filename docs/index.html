@@ -321,7 +321,9 @@
               <div class="form-row">
                 <div class="form-field">
                   <label for="booking-time">Čas (Po-Pi 15:00–19:00, So-Ne 09:00–19:00)</label>
-                  <input type="time" id="booking-time" name="time" required min="15:00" max="19:00" step="1800">
+                  <select id="booking-time" name="time" required>
+                    <option value="">Vyber dátum</option>
+                  </select>
                 </div>
                 <div class="form-field">
                   <label for="booking-duration">Dĺžka (min. 2h, default 3h)</label>
@@ -361,6 +363,9 @@
               </div>
               <button type="submit" class="btn btn-primary">Odoslať žiadosť</button>
               <p class="form-note">Potvrdenie a presné info príde na e-mail do 24 h.</p>
+              <span class="config-hint">
+                Dostupnosť sa nastavuje v <code>assets/config/booking.json</code> — tam môžeš meniť časy, dĺžky, služby a povolené dni.
+              </span>
             </form>
           </div>
         </div>
@@ -402,6 +407,30 @@
     <button class="lb__nav lb__nav--next" id="lbNext" type="button" aria-label="Ďalšia fotografia">›</button>
   </div>
 
-  <script src="assets/js/photofirst.js" defer></script>
+  <script>
+  window.BOOKING_CONFIG = {
+    "version": "1.0",
+    "updated": "2026-11-02",
+    "timezone": "Europe/Bratislava",
+    "booking": {
+      "minDuration": 2,
+      "maxDuration": 4,
+      "defaultDuration": 3,
+      "minNoticeHours": 48,
+      "maxHorizonDays": 60,
+      "maxBookingsPerDay": 2,
+      "bufferMinutes": 60
+    },
+    "availability": {
+      "weekday": { "enabled": true, "start": "15:00", "end": "19:00", "slotMinutes": 30 },
+      "weekend": { "enabled": true, "start": "09:00", "end": "19:00", "slotMinutes": 30 }
+    },
+    "services": [
+      { "id": "auto", "label": "Fotenie auta" },
+      { "id": "motorsport", "label": "Motorsport" }
+    ]
+  };
+</script>
+<script src="assets/js/photofirst.js" defer></script>
 </body>
 </html>
