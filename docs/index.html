@@ -300,37 +300,50 @@
             <form id="bookingForm" class="booking-form" novalidate>
               <div class="form-row">
                 <div class="form-field">
-                  <label for="booking-date">Dátum</label>
-                  <input type="date" id="booking-date" name="date" required min="">
+                  <label for="booking-name">Meno</label>
+                  <input type="text" id="booking-name" name="name" placeholder="Tvoje meno" required>
                 </div>
                 <div class="form-field">
-                  <label for="booking-time">Čas</label>
-                  <input type="time" id="booking-time" name="time" required min="08:00" max="18:00" step="1800">
+                  <label for="booking-email">E-mail</label>
+                  <input type="email" id="booking-email" name="email" placeholder="tvoj@email.sk" required>
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-field">
-                  <label for="booking-duration">Dĺžka (min. 2h)</label>
+                  <label for="booking-phone">Telefón</label>
+                  <input type="tel" id="booking-phone" name="phone" placeholder="+421 9xx xxx xxx" required>
+                </div>
+                <div class="form-field">
+                  <label for="booking-date">Dátum (min. 48h vopred, max. 60 dní)</label>
+                  <input type="date" id="booking-date" name="date" required min="" max="">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="booking-time">Čas (Po-Pi 15:00–19:00, So-Ne 09:00–19:00)</label>
+                  <input type="time" id="booking-time" name="time" required min="15:00" max="19:00" step="1800">
+                </div>
+                <div class="form-field">
+                  <label for="booking-duration">Dĺžka (min. 2h, default 3h)</label>
                   <select id="booking-duration" name="duration" required>
                     <option value="2">2 hodiny</option>
                     <option value="3" selected>3 hodiny</option>
                     <option value="4">4 hodiny</option>
-                    <option value="5">5 hodín</option>
-                    <option value="6">6 hodín</option>
                   </select>
                 </div>
+              </div>
+              <div class="form-row">
                 <div class="form-field">
                   <label for="booking-type">Typ fotenia</label>
                   <select id="booking-type" name="type" required>
                     <option value="auto">Fotenie auta</option>
                     <option value="motorsport">Motorsport</option>
-                    <option value="oba">Oba</option>
                   </select>
                 </div>
-              </div>
-              <div class="form-field full">
-                <label for="booking-car">Auto (znacka, model, rok)</label>
-                <input type="text" id="booking-car" name="car" placeholder="napr. BMW M4, 2022" required>
+                <div class="form-field">
+                  <label for="booking-car">Auto (znacka, model, rok)</label>
+                  <input type="text" id="booking-car" name="car" placeholder="napr. BMW M4, 2022" required>
+                </div>
               </div>
               <div class="form-field full">
                 <label for="booking-location">Miesto / Lokalita</label>

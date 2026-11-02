@@ -284,17 +284,63 @@
     }
   });
 
-  /* ===== Rezervačný formulár ===== */
+  /* ===== Rezervačný formulár — Cal.com nastavenia ===== */
   var form = doc.getElementById('bookingForm');
   if (form) {
     var dateInput = doc.getElementById('booking-date');
+    var timeInput = doc.getElementById('booking-time');
+    var durationInput = doc.getElementById('booking-duration');
+
+    function pad2(n) { return String(n).padStart(2, '0'); }
+
+    function addDays(date, days) {
+      var d = new Date(date);
+      d.setDate(d.getDate() + days);
+      return d;
+    }
+
+    function formatDate(d) {
+      return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+    }
+
+    function isWeekend(date) {
+      var day = date.getDay();
+      return day === 0 || day === 6;
+    }
+
+    function updateTimeLimits() {
+      if (!dateInput || !timeInput) return;
+      var selected = dateInput.value ? new Date(dateInput.value + 'T00:00:00') : null;
+      if (!selected) return;
+      var weekend = isWeekend(selected);
+      if (weekend) {
+        timeInput.min = '09:00';
+        timeInput.max = '16:00'; // last 3h slot ends 19:00
+      } else {
+        timeInput.min = '15:00';
+        timeInput.max = '16:00'; // last 3h slot ends 19:00
+      }
+      // adjust if current value out of range
+      if (timeInput.value && (timeInput.value < timeInput.min || timeInput.value > timeInput.max)) {
+        timeInput.value = timeInput.min;
+      }
+    }
+
+    // init date limits: min = today + 2 days (48h), max = today + 60 days
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+    var minDate = addDays(today, 2);
+    var maxDate = addDays(today, 60);
     if (dateInput) {
-      var today = new Date();
-      var yyyy = today.getFullYear();
-      var mm = String(today.getMonth() + 1).padStart(2, '0');
-      var dd = String(today.getDate()).padStart(2, '0');
-      dateInput.min = yyyy + '-' + mm + '-' + dd;
+      dateInput.min = formatDate(minDate);
+      dateInput.max = formatDate(maxDate);
       dateInput.value = dateInput.min;
+      updateTimeLimits();
+    }
+
+    // update time limits when date changes
+    if (dateInput) {
+      dateInput.addEventListener('change', updateTimeLimits);
     }
 
     form.addEventListener('submit', function (e) {
@@ -303,17 +349,42 @@
       var data = {};
       fd.forEach(function (v, k) { data[k] = v; });
 
-      if (data.duration < 2) {
+      // validation: duration >= 2
+      if (parseInt(data.duration, 10) < 2) {
         alert('Minimálna dĺžka fotenia je 2 hodiny.');
         return;
       }
 
-      var subject = encodeURIComponent('Rezervácia fotenia — ' + (data.type || 'auto') + ' — ' + data.date);
+      // validation: date within range
+      var selectedDate = data.date ? new Date(data.date + 'T00:00:00') : null;
+      if (!selectedDate || selectedDate < minDate || selectedDate > maxDate) {
+        alert('Dátum musí byť aspoň 48 hodín vopred a max. 60 dní vpred.');
+        return;
+      }
+
+      // validation: time matches availability
+      if (selectedDate && timeInput) {
+        var weekend = isWeekend(selectedDate);
+        var timeVal = data.time;
+        if (!timeVal) { alert('Vyber čas.'); return; }
+        var minAllowed = weekend ? '09:00' : '15:00';
+        var maxAllowed = '16:00'; // last start for 3h ending 19:00
+        if (timeVal < minAllowed || timeVal > maxAllowed) {
+          alert('Čas mimo dostupnosti: ' + (weekend ? ' víkend 09:00–16:00' : ' pracovný deň 15:00–16:00'));
+          return;
+        }
+      }
+
+      var typeLabel = data.type === 'auto' ? 'Fotenie auta' : 'Motorsport';
+      var subject = encodeURIComponent('Rezervácia fotenia — ' + typeLabel + ' — ' + data.date);
       var body = encodeURIComponent(
+        'Meno: ' + data.name + '\n' +
+        'E-mail: ' + data.email + '\n' +
+        'Telefón: ' + data.phone + '\n' +
         'Dátum: ' + data.date + '\n' +
         'Čas: ' + data.time + '\n' +
         'Dĺžka: ' + data.duration + ' hodín\n' +
-        'Typ: ' + (data.type === 'auto' ? 'Fotenie auta' : data.type === 'motorsport' ? 'Motorsport' : 'Oba') + '\n' +
+        'Typ: ' + typeLabel + '\n' +
         'Auto: ' + data.car + '\n' +
         'Miesto: ' + data.location + '\n' +
         'Poznámky: ' + (data.notes || '—') + '\n\n' +
@@ -324,7 +395,10 @@
       window.location.href = mailto;
 
       form.reset();
-      if (dateInput) dateInput.value = dateInput.min;
+      if (dateInput) {
+        dateInput.value = dateInput.min;
+        updateTimeLimits();
+      }
     });
   }
 
