@@ -22,7 +22,7 @@
   <meta name="twitter:image" content="https://samustang1.github.io/cizmar-photography/assets/img/og.jpg">
 
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/photofirst.css?v=4">
+  <link rel="stylesheet" href="assets/css/photofirst.css">
 
   <script type="application/ld+json">
   {
@@ -296,17 +296,59 @@
           </div>
 
           <div class="cal-card">
-            <p class="cal-label">Vyber si termín</p>
-            <div id="calInline" class="cal-inline" aria-busy="true">
-              <div class="cal-inline__loader" aria-hidden="true"><span></span></div>
-            </div>
-            <p class="cal-note">
-              Ak sa kalendár nezobrazí,
-              <a href="https://cal.com/cizmar.photo/automobilove-fotenie" target="_blank" rel="noopener">otvor ho v novom okne</a>.
-            </p>
-            <noscript>
-              <p class="cal-note"><a href="https://cal.com/cizmar.photo/automobilove-fotenie" target="_blank" rel="noopener">Otvoriť rezervačný kalendár</a></p>
-            </noscript>
+            <p class="cal-label">Rezervovať termín</p>
+            <form id="bookingForm" class="booking-form" novalidate>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="booking-date">Dátum</label>
+                  <input type="date" id="booking-date" name="date" required min="">
+                </div>
+                <div class="form-field">
+                  <label for="booking-time">Čas</label>
+                  <input type="time" id="booking-time" name="time" required min="08:00" max="18:00" step="1800">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="booking-duration">Dĺžka (min. 2h)</label>
+                  <select id="booking-duration" name="duration" required>
+                    <option value="2">2 hodiny</option>
+                    <option value="3" selected>3 hodiny</option>
+                    <option value="4">4 hodiny</option>
+                    <option value="5">5 hodín</option>
+                    <option value="6">6 hodín</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label for="booking-type">Typ fotenia</label>
+                  <select id="booking-type" name="type" required>
+                    <option value="auto">Fotenie auta</option>
+                    <option value="motorsport">Motorsport</option>
+                    <option value="oba">Oba</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-field full">
+                <label for="booking-car">Auto (znacka, model, rok)</label>
+                <input type="text" id="booking-car" name="car" placeholder="napr. BMW M4, 2022" required>
+              </div>
+              <div class="form-field full">
+                <label for="booking-location">Miesto / Lokalita</label>
+                <input type="text" id="booking-location" name="location" placeholder="Poprad, garáž, trati..." required>
+              </div>
+              <div class="form-field full">
+                <label for="booking-notes">Poznámky / predstava</label>
+                <textarea id="booking-notes" name="notes" rows="3" placeholder="Špecifické požiadavky, doprovod, atd."></textarea>
+              </div>
+              <div class="form-field full">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="gdpr" required>
+                  <span>Súhlasím so spracovaním osobných údajov na účely rezervácie.</span>
+                </label>
+              </div>
+              <button type="submit" class="btn btn-primary">Odoslať žiadosť</button>
+              <p class="form-note">Potvrdenie a presné info príde na e-mail do 24 h.</p>
+            </form>
           </div>
         </div>
       </div>
@@ -347,7 +389,6 @@
     <button class="lb__nav lb__nav--next" id="lbNext" type="button" aria-label="Ďalšia fotografia">›</button>
   </div>
 
-  <script src="assets/js/photofirst.js?v=4" defer></script>
-  <script src="assets/js/cal-embed.js?v=8" defer></script>
+  <script src="assets/js/photofirst.js" defer></script>
 </body>
 </html>

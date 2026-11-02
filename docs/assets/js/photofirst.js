@@ -283,4 +283,49 @@
       }
     }
   });
+
+  /* ===== Rezervačný formulár ===== */
+  var form = doc.getElementById('bookingForm');
+  if (form) {
+    var dateInput = doc.getElementById('booking-date');
+    if (dateInput) {
+      var today = new Date();
+      var yyyy = today.getFullYear();
+      var mm = String(today.getMonth() + 1).padStart(2, '0');
+      var dd = String(today.getDate()).padStart(2, '0');
+      dateInput.min = yyyy + '-' + mm + '-' + dd;
+      dateInput.value = dateInput.min;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var fd = new FormData(form);
+      var data = {};
+      fd.forEach(function (v, k) { data[k] = v; });
+
+      if (data.duration < 2) {
+        alert('Minimálna dĺžka fotenia je 2 hodiny.');
+        return;
+      }
+
+      var subject = encodeURIComponent('Rezervácia fotenia — ' + (data.type || 'auto') + ' — ' + data.date);
+      var body = encodeURIComponent(
+        'Dátum: ' + data.date + '\n' +
+        'Čas: ' + data.time + '\n' +
+        'Dĺžka: ' + data.duration + ' hodín\n' +
+        'Typ: ' + (data.type === 'auto' ? 'Fotenie auta' : data.type === 'motorsport' ? 'Motorsport' : 'Oba') + '\n' +
+        'Auto: ' + data.car + '\n' +
+        'Miesto: ' + data.location + '\n' +
+        'Poznámky: ' + (data.notes || '—') + '\n\n' +
+        'GDPR súhlas: áno'
+      );
+
+      var mailto = 'mailto:cizsamko@gmail.com?subject=' + subject + '&body=' + body;
+      window.location.href = mailto;
+
+      form.reset();
+      if (dateInput) dateInput.value = dateInput.min;
+    });
+  }
+
 })();
