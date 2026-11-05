@@ -390,17 +390,31 @@
       typeInput.innerHTML = html;
     }
 
-    function initForm() {
+    function updateDateSelect() {
+      if (!dateInput) return;
       var today = new Date();
       today.setHours(0, 0, 0, 0);
       var minDate = addDays(today, Math.ceil((config.booking.minNoticeHours || 48) / 24));
       var maxDate = addDays(today, config.booking.maxHorizonDays || 60);
 
-      if (dateInput) {
-        dateInput.min = formatDate(minDate);
-        dateInput.max = formatDate(maxDate);
-        dateInput.value = dateInput.min;
+      var currentVal = dateInput.value;
+      var html = '<option value="">Vyber dátum</option>';
+      var d = new Date(minDate);
+      while (d <= maxDate) {
+        var weekend = isWeekend(d);
+        var dayType = weekend ? 'weekend' : 'weekday';
+        var range = getTimeRange(dayType);
+        if (range) {
+          var val = formatDate(d);
+          html += '<option value="' + val + '"' + (val === currentVal ? ' selected' : '') + '>' + val + '</option>';
+        }
+        d = addDays(d, 1);
       }
+      dateInput.innerHTML = html;
+    }
+
+    function initForm() {
+      updateDateSelect();
       updateTimeSelect();
       updateDurationOptions();
       updateTypeOptions();
