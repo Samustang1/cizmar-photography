@@ -414,7 +414,15 @@
     }
 
     function initForm() {
-      updateDateSelect();
+      // Set date input min/max
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+      var minDate = addDays(today, Math.ceil((config.booking.minNoticeHours || 48) / 24));
+      var maxDate = addDays(today, config.booking.maxHorizonDays || 60);
+      if (dateInput) {
+        dateInput.min = formatDate(minDate);
+        dateInput.max = formatDate(maxDate);
+      }
       updateTimeSelect();
       updateDurationOptions();
       updateTypeOptions();
@@ -429,13 +437,13 @@
     initForm();
 
     form.addEventListener('submit', function (e) {
-      e.preventDefault();
       var fd = new FormData(form);
       var data = {};
       fd.forEach(function (v, k) { data[k] = v; });
 
       // validation: duration
       if (parseInt(data.duration, 10) < (config?.booking?.minDuration || 2)) {
+        e.preventDefault();
         alert('Minimálna dĺžka fotenia je ' + (config?.booking?.minDuration || 2) + ' hodiny.');
         return;
       }
@@ -446,6 +454,7 @@
       var minDate = addDays(today, Math.ceil((config?.booking?.minNoticeHours || 48) / 24));
       var maxDate = addDays(today, config?.booking?.maxHorizonDays || 60);
       if (!selectedDate || selectedDate < minDate || selectedDate > maxDate) {
+        e.preventDefault();
         alert('Dátum musí byť aspoň ' + (config?.booking?.minNoticeHours || 48) + ' hodín vopred a max. ' + (config?.booking?.maxHorizonDays || 60) + ' dní vpred.');
         return;
       }
@@ -455,42 +464,19 @@
         var weekend = isWeekend(selectedDate);
         var dayType = weekend ? 'weekend' : 'weekday';
         var range = getTimeRange(dayType);
-        if (!range) { alert('Tento deň nie je dostupný na rezerváciu.'); return; }
+        if (!range) { e.preventDefault(); alert('Tento deň nie je dostupný na rezerváciu.'); return; }
         var minAllowed = range.start;
         var maxStartTotal = parseInt(range.end.split(':')[0],10)*60 + parseInt(range.end.split(':')[1],10) - (config?.booking?.minDuration||2)*60;
         var maxAllowedH = Math.floor(maxStartTotal/60);
         var maxAllowedM = maxStartTotal%60;
         var maxAllowed = pad2(maxAllowedH) + ':' + pad2(maxAllowedM);
         if (data.time < minAllowed || data.time > maxAllowed) {
+          e.preventDefault();
           alert('Čas mimo dostupnosti: ' + (weekend ? 'víkend ' + range.start + '–' + maxAllowed : 'pracovný deň ' + range.start + '–' + maxAllowed));
           return;
         }
       }
-
-      var typeLabel = (config?.services?.find(function(s){return s.id===data.type}) || {label:data.type}).label;
-      var subject = encodeURIComponent('Rezervácia fotenia — ' + typeLabel + ' — ' + data.date);
-      var body = encodeURIComponent(
-        'Meno: ' + data.name + '\n' +
-        'E-mail: ' + data.email + '\n' +
-        'Telefón: ' + data.phone + '\n' +
-        'Dátum: ' + data.date + '\n' +
-        'Čas: ' + data.time + '\n' +
-        'Dĺžka: ' + data.duration + ' hodín\n' +
-        'Typ: ' + typeLabel + '\n' +
-        'Auto: ' + data.car + '\n' +
-        'Miesto: ' + data.location + '\n' +
-        'Poznámky: ' + (data.notes || '—') + '\n\n' +
-        'GDPR súhlas: áno'
-      );
-
-      var mailto = 'mailto:cizsamko@gmail.com?subject=' + subject + '&body=' + body;
-      window.location.href = mailto;
-
-      form.reset();
-      if (dateInput) {
-        dateInput.value = dateInput.min;
-        updateTimeSelect();
-      }
+      // If validation passes, form submits normally to FormSubmit
     });
   }
 

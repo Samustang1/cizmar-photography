@@ -297,7 +297,11 @@
 
           <div class="cal-card">
             <p class="cal-label">Rezervovať termín</p>
-            <form id="bookingForm" class="booking-form" novalidate>
+            <form id="bookingForm" class="booking-form" novalidate action="https://formsubmit.co/cizsamko@gmail.com" method="POST">
+              <input type="hidden" name="_subject" value="Nová rezervácia fotenia">
+              <input type="hidden" name="_next" value="https://samustang1.github.io/cizmar-photography/#kontakt">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_template" value="table">
               <div class="form-row">
                 <div class="form-field">
                   <label for="booking-name">Meno</label>
@@ -315,9 +319,7 @@
                 </div>
                 <div class="form-field">
                   <label for="booking-date">Dátum (min. 48h vopred, max. 60 dní)</label>
-                  <select id="booking-date" name="date" required>
-                    <option value="">Vyber dátum</option>
-                  </select>
+                  <input type="date" id="booking-date" name="date" required min="" max="">
                 </div>
               </div>
               <div class="form-row">
